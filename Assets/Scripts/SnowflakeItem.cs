@@ -3,34 +3,26 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 
-public class Snowflake : MonoBehaviour
+public class SnowflakeItem : AbstractItem
 {
     [SerializeField]
     private static readonly Vector3 rotAngle = new Vector3(0, 500f, 0);
 
     private void Update()
     {
-        transform.Rotate(rotAngle * Time.deltaTime, Space.World);
+        transform.Rotate(rotAngle * Time.deltaTime, Space.Self);
     }
 
-    public void Triggered()
+    public override void TouchedByPlayer()
     {
-        SnowflakesManager.Instance.AddScore(1);
-        gameObject.SetActive(false);
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log($"OnTriggerEnter: {name} triggered by {other.name}");
-
-        if (other.CompareTag("Player")) Triggered();
+        base.TouchedByPlayer();
+        ItemsManager.Instance.AddScore(1);
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log($"OnCollisionEnter: {name} triggered by {collision.gameObject.name}");
-
     }
+
 }

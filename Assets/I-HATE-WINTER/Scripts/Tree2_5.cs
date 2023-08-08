@@ -1,23 +1,28 @@
 
 using UnityEngine;
 
-public class Tree2_5 : MonoBehaviour
+
+namespace IHateWinter
 {
-    [SerializeField]
-    private SpriteRenderer spriteRenderer;
 
-    static Sprite[] trees;
-
-    private void Awake()
+    public class Tree2_5 : MonoBehaviour
     {
-        trees = Resources.LoadAll<Sprite>("trees");
+        [SerializeField]
+        private SpriteRenderer spriteRenderer;
 
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        static Sprite[] trees;
 
-        spriteRenderer.sprite = trees[Random.Range(0, trees.Length)];
+        private void Awake()
+        {
+            trees = Resources.LoadAll<Sprite>("trees");
 
-        LookAtCameraManager.AddSpriteTransform(spriteRenderer.transform);
+            if (spriteRenderer == null)
+                spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+            spriteRenderer.sprite = trees[Random.Range(0, trees.Length)];
+
+            LookAtCameraManager.AddSpriteTransform(spriteRenderer.transform);
+        }
+
     }
-
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ItemSnowflake
   - ItemFlame
+  - Obstacle
   layers:
   - Default
   - TransparentFX

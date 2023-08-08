@@ -16,10 +16,10 @@ GameObject:
   - component: {fileID: -9030986342331780711}
   m_Layer: 0
   m_Name: Tree
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1284317125727974972
 Transform:
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70af992df52ff214baba6831072ea167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   spriteRenderer: {fileID: 0}
 --- !u!208 &-9030986342331780711
 NavMeshObstacle:
@@ -133,7 +134,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_Extents: {x: 0.05, y: 1, z: 0.05}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -154,7 +155,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8547253806853130741
 Transform:

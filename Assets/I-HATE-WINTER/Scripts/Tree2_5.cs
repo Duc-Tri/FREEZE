@@ -5,7 +5,7 @@ using UnityEngine;
 namespace IHateWinter
 {
 
-    public class Tree2_5 : MonoBehaviour
+    public class Tree2_5 : AResource
     {
         [SerializeField]
         private SpriteRenderer spriteRenderer;
@@ -14,6 +14,7 @@ namespace IHateWinter
 
         private void Awake()
         {
+            type = RESOURCE.TREE;
             trees = Resources.LoadAll<Sprite>("trees");
 
             if (spriteRenderer == null)

@@ -11,10 +11,11 @@ namespace IHateWinter
         TreeManager treeManager;
 
         [SerializeField] private Transform treePrefab;
-        [SerializeField]
-        [Range(0, 2000)]
-        private int numberTrees = 1;
-        private float maxXZ = 100;
+
+        [SerializeField][Range(0, 200000)] private int numberTrees = 1;
+
+        [SerializeField][Range(0, 1000)] private float maxXZ = 100;
+
         private void Awake()
         {
             treeManager = new TreeManager();
@@ -23,7 +24,7 @@ namespace IHateWinter
             {
                 Transform tree = Instantiate(treePrefab, this.transform);
                 tree.position = new Vector3(2f * Random.value * maxXZ - maxXZ, 1.5f, 2f * Random.value * maxXZ - maxXZ);
-                tree.name = "TREE-" + i;
+                tree.name = "@tree-" + i;
             }
         }
 

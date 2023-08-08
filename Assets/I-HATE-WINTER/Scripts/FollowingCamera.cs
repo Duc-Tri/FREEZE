@@ -12,9 +12,8 @@ namespace IHateWinter
         [SerializeField][Range(1, 100)] private float heightAbovePlayer = 10f;
         [SerializeField][Range(0.01f, 20)] private float speed = 2.5f;
 
-        public Vector3 idealCamPos;
+        private Vector3 idealCamPos;
 
-        //public float distanceDiff;
         private GameObject player;
         private Transform playerTransform;
 

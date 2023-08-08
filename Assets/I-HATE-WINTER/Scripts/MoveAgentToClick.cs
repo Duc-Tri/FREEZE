@@ -3,20 +3,26 @@ using UnityEngine.AI;
 
 namespace IHateWinter
 {
-    public class MoveToClick : MonoBehaviour
+    public class MoveAgentToClick : MonoBehaviour
     {
-
         private Camera mainCamera;
         protected NavMeshAgent agent;
+
+        private void OnEnable()
+        {
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(transform.position, out hit, 1000, NavMesh.AllAreas))
+                transform.position = hit.position;
+        }
 
         protected virtual void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
+            mainCamera = Camera.main;
         }
 
         private void Start()
         {
-            mainCamera = Camera.main;
         }
 
         void Update()
@@ -32,7 +38,13 @@ namespace IHateWinter
                     if (!hit.collider.CompareTag("Obstacle"))
                     {
                         agent.SetDestination(hit.point);
+                        if (hit.collider.CompareTag("Resource"))
+                        {
+                            AResource resource = hit.collider.GetComponent<AResource>();
+                            Debug.Log($"Click on {resource.tag} / {resource.type} / {resource.name}");
+                        }
                     }
+
                 }
             }
         }

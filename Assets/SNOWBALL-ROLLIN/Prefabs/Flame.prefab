@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3427845513859558309}
   m_Layer: 0
   m_Name: Flame
-  m_TagString: ItemFire
+  m_TagString: ItemFlame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -6,6 +6,7 @@ using UnityEngine;
 namespace IHateWinter
 {
 
+
     public class GameManager : MonoBehaviour
     {
         TreeManager treeManager;
@@ -20,14 +21,19 @@ namespace IHateWinter
 
         [SerializeField][Range(0, 1000)] private float maxXZ = 100;
 
+        public static GAME_MODE GameMode { get; private set; }
+        private static Player2_5 player;
+
         private void Awake()
         {
             treeManager = new TreeManager();
+            if (player == null) player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player2_5>();
+
 
             for (int i = 0; i < numberTrees; i++)
             {
                 Transform tree = Instantiate(treePrefab, this.transform);
-                tree.position = new Vector3(2f * Random.value * maxXZ - maxXZ, 1.5f, 2f * Random.value * maxXZ - maxXZ);
+                tree.position = new Vector3(2f * Random.value * maxXZ - maxXZ, 0.5f, 2f * Random.value * maxXZ - maxXZ);
                 tree.name = "@tree-" + i;
             }
             for (int i = 0; i < numberStones; i++)
@@ -36,16 +42,22 @@ namespace IHateWinter
                 stone.position = new Vector3(2f * Random.value * maxXZ - maxXZ, 0.5f, 2f * Random.value * maxXZ - maxXZ);
                 stone.name = "@stone-" + i;
             }
+
+            Injection();
         }
 
         void Start()
         {
-
+            GameMode = GAME_MODE.IN_GAME; // TODO : change it when we have menu !
         }
 
-        void Update()
+        void Injection()
         {
+            MouseManager.OnClickOnFloor -= player.MoveAgent;
+            MouseManager.OnClickOnFloor += player.MoveAgent;
 
+            MouseManager.OnHoverOnResource -= TextHelperManager.TextHover;
+            MouseManager.OnHoverOnResource += TextHelperManager.TextHover;
         }
     }
 

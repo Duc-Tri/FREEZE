@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace IHateWinter
 {
@@ -12,13 +13,25 @@ namespace IHateWinter
         private Transform spriteTransform;
         private Camera mainCamera;
         private Transform mainCameraTransform;
+        private NavMeshAgent agent;
 
         private void Awake()
         {
             mainCamera = Camera.main;
             mainCameraTransform = Camera.main.transform;
             spriteTransform = spriteRenderer.transform;
+            agent=GetComponent<NavMeshAgent>();
+
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(transform.position, out hit, 100, NavMesh.AllAreas))
+                transform.position = hit.position;
+
             LookAtCameraManager.AddSpriteTransform(spriteTransform);
+        }
+
+        public void MoveAgent(Vector3 pos)
+        {
+            agent.SetDestination(pos);
         }
 
         private void Update()

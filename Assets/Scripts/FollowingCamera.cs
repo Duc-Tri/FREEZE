@@ -40,7 +40,7 @@ namespace IHateWinter
 
             // the ideal position is NEVER reached
             if ((transform.position - idealCamPos).sqrMagnitude > 0.01f)
-                transform.position = Vector3.Lerp(transform.position, idealCamPos, speed * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, idealCamPos, Mathf.Min(speed * Time.deltaTime, 0.1f));
 
         }
 

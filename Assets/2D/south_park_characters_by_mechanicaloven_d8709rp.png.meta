@@ -1,0 +1,602 @@
+fileFormatVersion: 2
+guid: 09b89753a71f30c4bb958a4a1056087b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 500
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_0
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 3646
+        width: 615
+        height: 940
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f226b2ce7683da48981eee7e921ac8f
+      internalID: -1267894729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_1
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 3618
+        width: 769
+        height: 931
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c83567bc6231124083a8488fbd37408
+      internalID: -103615362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_2
+      rect:
+        serializedVersion: 2
+        x: 1852
+        y: 3637
+        width: 988
+        height: 905
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 219d84a5c1f36ec4ea38080b07a4f1fe
+      internalID: 1960080352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_3
+      rect:
+        serializedVersion: 2
+        x: 3032
+        y: 3635
+        width: 671
+        height: 914
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3630b0426ad5b8e41a4f1f1cda8a7456
+      internalID: -2079622735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_4
+      rect:
+        serializedVersion: 2
+        x: 4015
+        y: 3646
+        width: 591
+        height: 914
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab6c0485f92062469a961a03a22b203
+      internalID: -52322103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_5
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 2564
+        width: 589
+        height: 912
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9115d170827115846913fa3f520fb1c6
+      internalID: -1233208778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_6
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 2554
+        width: 658
+        height: 879
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e86b7925ac64fa408ffb81d3b26bfad
+      internalID: 1506390590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_7
+      rect:
+        serializedVersion: 2
+        x: 2041
+        y: 2545
+        width: 607
+        height: 867
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a39aa36428c4a048a83fd3643037456
+      internalID: 1029405271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_8
+      rect:
+        serializedVersion: 2
+        x: 2925
+        y: 2544
+        width: 805
+        height: 906
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a89269d5a59463247b3df875bab6cdd7
+      internalID: -344951384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_9
+      rect:
+        serializedVersion: 2
+        x: 4017
+        y: 2535
+        width: 608
+        height: 858
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45518efc6749486448df3aea1a6d6ed7
+      internalID: 1993224215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_10
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 1491
+        width: 637
+        height: 940
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b455ab45733bfa4893ac114d5996c25
+      internalID: 88017462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_11
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 1490
+        width: 646
+        height: 928
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4be6fec646b4e34db9da7d3a18dd5f9
+      internalID: 1012539705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_12
+      rect:
+        serializedVersion: 2
+        x: 2030
+        y: 1472
+        width: 648
+        height: 930
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fce530d7a3f1f644f8fa0b77ed327f6b
+      internalID: -1878639044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_13
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 1481
+        width: 656
+        height: 916
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a886e1a8037d8f45bfa53ff4dbcc535
+      internalID: -334280146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_14
+      rect:
+        serializedVersion: 2
+        x: 3988
+        y: 1481
+        width: 713
+        height: 912
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3fc2632a617511408e2c7381fcd1589
+      internalID: 84006448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_15
+      rect:
+        serializedVersion: 2
+        x: 3988
+        y: 1904
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 484c58778ab8edb42a695c4c2920cd7b
+      internalID: 310720996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_16
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 209
+        width: 925
+        height: 764
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5511e8680ae7bcd43ba5e56bb479c5a8
+      internalID: 1755965565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_17
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 203
+        width: 666
+        height: 974
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fb606fbdfd1f6445856faa06e10e82e
+      internalID: -1680393369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_18
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 203
+        width: 696
+        height: 889
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96c8573266d30074083931e1d75fa8a6
+      internalID: 1493332950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_19
+      rect:
+        serializedVersion: 2
+        x: 2972
+        y: 198
+        width: 684
+        height: 1170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cc4dfc91e3d0904caccf2a86a6b7f32
+      internalID: 640232302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: south_park_characters_by_mechanicaloven_d8709rp_20
+      rect:
+        serializedVersion: 2
+        x: 3998
+        y: 197
+        width: 646
+        height: 952
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d23db0918a327cc44bec3c71a5282ba4
+      internalID: 1248217567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: fce5e3b205f260648a735fbaaa6e9281
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      south_park_characters_by_mechanicaloven_d8709rp_0: -1267894729
+      south_park_characters_by_mechanicaloven_d8709rp_1: -103615362
+      south_park_characters_by_mechanicaloven_d8709rp_10: 88017462
+      south_park_characters_by_mechanicaloven_d8709rp_11: 1012539705
+      south_park_characters_by_mechanicaloven_d8709rp_12: -1878639044
+      south_park_characters_by_mechanicaloven_d8709rp_13: -334280146
+      south_park_characters_by_mechanicaloven_d8709rp_14: 84006448
+      south_park_characters_by_mechanicaloven_d8709rp_15: 310720996
+      south_park_characters_by_mechanicaloven_d8709rp_16: 1755965565
+      south_park_characters_by_mechanicaloven_d8709rp_17: -1680393369
+      south_park_characters_by_mechanicaloven_d8709rp_18: 1493332950
+      south_park_characters_by_mechanicaloven_d8709rp_19: 640232302
+      south_park_characters_by_mechanicaloven_d8709rp_2: 1960080352
+      south_park_characters_by_mechanicaloven_d8709rp_20: 1248217567
+      south_park_characters_by_mechanicaloven_d8709rp_3: -2079622735
+      south_park_characters_by_mechanicaloven_d8709rp_4: -52322103
+      south_park_characters_by_mechanicaloven_d8709rp_5: -1233208778
+      south_park_characters_by_mechanicaloven_d8709rp_6: 1506390590
+      south_park_characters_by_mechanicaloven_d8709rp_7: 1029405271
+      south_park_characters_by_mechanicaloven_d8709rp_8: -344951384
+      south_park_characters_by_mechanicaloven_d8709rp_9: 1993224215
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

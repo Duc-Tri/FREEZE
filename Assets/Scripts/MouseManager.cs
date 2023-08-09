@@ -23,33 +23,35 @@ namespace IHateWinter
         {
         }
 
+        RaycastHit raycastHit;
+        NavMeshHit navmeshHit;
         void Update()
         {
             if (GameManager.GameMode == GAME_MODE.IN_GAME)
             {
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, distanceRaycast))
+                if (Physics.Raycast(ray, out raycastHit, distanceRaycast))
                 {
                     //Debug.Log("HIT: " + hit.collider.gameObject.tag);
 
                     if (Input.GetMouseButtonDown(0))
                     {
                         // Left mouse button clicked ==============================================
-                        if (hit.collider.CompareTag("Floor"))
-                            OnClickOnFloor?.Invoke(hit.point);
-
+                        if (raycastHit.collider.CompareTag("Floor"))
+                            OnClickOnFloor?.Invoke(raycastHit.point);
+                        else if (NavMesh.SamplePosition(raycastHit.point, out navmeshHit, 50, NavMesh.AllAreas))
+                            OnClickOnFloor?.Invoke(navmeshHit.position);
                     }
                     else if (Input.GetMouseButtonDown(1))
                     {
                         // Right mouse button clicked =============================================
 
                     }
-                    else if (oldCollided != hit.collider)
+                    else if (oldCollided != raycastHit.collider)
                     {
                         // No mouse button clicked, just hovering =================================
-                        if (hit.collider.CompareTag("Resource"))
-                            OnHoverOnResource?.Invoke(hit.collider.gameObject.GetComponent<AResource>());
+                        if (raycastHit.collider.CompareTag("Resource"))
+                            OnHoverOnResource?.Invoke(raycastHit.collider.gameObject.GetComponent<AResource>());
                         else
                             OnHoverOnResource?.Invoke(null);
                     }

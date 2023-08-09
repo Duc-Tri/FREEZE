@@ -19,7 +19,7 @@ namespace IHateWinter
 
         [SerializeField][Range(0, 200000)] private int numberStones = 1;
 
-        [SerializeField][Range(0, 1000)] private float maxXZ = 100;
+        [SerializeField][Range(0, 5000)] private float maxXZ = 100;
 
         public static GAME_MODE GameMode { get; private set; }
         private static Player2_5 player;

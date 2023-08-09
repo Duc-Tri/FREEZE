@@ -25,7 +25,7 @@ public class TextHelperManager : MonoBehaviour
             v.y += resource.GetComponent<NavMeshObstacle>().size.y;
             staticTransform.position = v;
 
-            text.text = $"{resource.tag} / {resource.type} / {resource.name}";
+            text.text = $"{resource.name} / {resource.type} / {resource.tag}";
         }
         else
         {

@@ -563,10 +563,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treePrefab: {fileID: 1284317125727974972, guid: d841d7b4306c5df43bdb0da62ed2462b, type: 3}
-  numberTrees: 500
+  numberTrees: 5000
   stonePrefab: {fileID: 5124842334279455654, guid: 31fea44b23aef0d47af68d468f5e2eb6, type: 3}
-  numberStones: 250
-  maxXZ: 200
+  numberStones: 5000
+  maxXZ: 750
 --- !u!4 &766094067
 Transform:
   m_ObjectHideFlags: 0
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  distanceRaycast: 35
+  distanceRaycast: 50
 --- !u!1 &1032525183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,7 +1676,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalScale: {x: 150, y: 1, z: 150}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1694,7 +1694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 0
+  m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 8c6c010d8d1ad3243bcbe9f851e343ad, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: d0c386c9dd9ae8146bb78d771ddf457a, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &2080986181170581839
 PrefabInstance:
@@ -1764,6 +1764,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6766019316509286097, guid: bc0dabafcc26021468ec340ac059de4d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

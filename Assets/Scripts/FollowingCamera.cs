@@ -5,7 +5,6 @@ using static UnityEngine.GraphicsBuffer;
 
 namespace IHateWinter
 {
-
     public class FollowingCamera : MonoBehaviour
     {
         [SerializeField][Range(1, 100)] private float maxDistanceFromPlayer = 20f;

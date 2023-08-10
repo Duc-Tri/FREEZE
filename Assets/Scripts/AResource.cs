@@ -4,20 +4,25 @@ using UnityEngine;
 
 namespace IHateWinter
 {
+    // An abstract resource (clickable on screen)
     public abstract class AResource : MonoBehaviour
     {
         public RESOURCE type = RESOURCE.NONE;
 
-        [SerializeField]
-        private SpriteRenderer spriteRenderer;
+        [SerializeField] private SpriteRenderer spriteRenderer;
 
+        public static Dictionary<RESOURCE, string> resourcesPath = new Dictionary<RESOURCE, string> {
+            { RESOURCE.TREE, "trees" },
+            { RESOURCE.STONE, "stones" } };
 
-        public static Dictionary<RESOURCE, string> resourcesPath = new Dictionary<RESOURCE, string> { { RESOURCE.TREE, "trees" }, { RESOURCE.STONE, "stones" } };
-        public static Dictionary<RESOURCE, Sprite[]> spritesResources = new Dictionary<RESOURCE, Sprite[]> { { RESOURCE.TREE, null }, { RESOURCE.STONE, null } };
+        public static Dictionary<RESOURCE, Sprite[]> spritesResources = new Dictionary<RESOURCE, Sprite[]> {
+            { RESOURCE.TREE, null },
+            { RESOURCE.STONE, null } };
 
         protected void Init(RESOURCE t)
         {
             type = t;
+            tag = "Resource";
             if (spritesResources[type] == null)
                 spritesResources[type] = Resources.LoadAll<Sprite>(resourcesPath[type]);
 
@@ -28,7 +33,6 @@ namespace IHateWinter
 
             LookAtCameraManager.AddSpriteTransform(spriteRenderer.transform);
         }
+
     }
-
-
 }

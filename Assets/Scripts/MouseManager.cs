@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 namespace IHateWinter
 {
@@ -27,7 +28,7 @@ namespace IHateWinter
         NavMeshHit navmeshHit;
         void Update()
         {
-            if (GameManager.GameMode == GAME_MODE.IN_GAME)
+            if (GameManager.GameMode == GAME_MODE.IN_GAME && !EventSystem.current.IsPointerOverGameObject())
             {
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out raycastHit, distanceRaycast))

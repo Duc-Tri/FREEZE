@@ -47,7 +47,7 @@ namespace IHateWinter
 
         internal void ActOnResource(AResource resource)
         {
-            if (resource is IInventoryItem i)
+            if (Vector3.Distance(transform.position, resource.transform.position) < 2.5f && resource is IInventoryItem i)
             {
                 if (Inventory.Instance.TryAdd(i))
                     PoolerGameobjects.Instance.SaveToPool(resource.gameObject);

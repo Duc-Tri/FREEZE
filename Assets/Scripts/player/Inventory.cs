@@ -12,8 +12,8 @@ namespace IHateWinter
 {
     public class Inventory : MonoBehaviour
     {
-        private const int MAX_ITEMS = 10;
-        public IInventoryItem[] Items = new IInventoryItem[MAX_ITEMS];
+        private const int INVENTORY_CAPACITY = 10;
+        public IInventoryItem[] Items = new IInventoryItem[INVENTORY_CAPACITY];
 
         public Button[] ButtonItems;
         private Canvas canvas;
@@ -40,7 +40,13 @@ namespace IHateWinter
 
         private void UpdateUI()
         {
-            Debug.Log("UpdateUI TODO !");
+            for (int i = 0; i < INVENTORY_CAPACITY; i++)
+            {
+                Button button = ButtonItems[i];
+
+                button.GetComponentInChildren<TextMeshProUGUI>().text = (Items[i] != null) ? Items[i].Name : "0";
+            }
+
         }
 
         private void Awake()
@@ -51,13 +57,8 @@ namespace IHateWinter
             // TODO: instantiate Button dynamically dude !
             ButtonItems = canvas.GetComponentsInChildren<Button>();
 
-            Assert.AreEqual(MAX_ITEMS, ButtonItems.Length);
-
-            for (int i = 0; i < ButtonItems.Length; i++)
-            {
-                Button button = ButtonItems[i];
-                button.GetComponentInChildren<TextMeshProUGUI>().text = "bt" + i;
-            }
+            Assert.AreEqual(INVENTORY_CAPACITY, ButtonItems.Length);
+            UpdateUI();
         }
 
     }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 32763391a9cce9241978626f5035aa5e
+guid: 1b4d2d0d7c172364d9b840bc84e10634
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -74,7 +74,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -123,160 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stones_0
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 678
-        width: 341
-        height: 238
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d2e2470d33afeea48a3ad34983f98ae4
-      internalID: -884391830
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stones_1
-      rect:
-        serializedVersion: 2
-        x: 445
-        y: 679
-        width: 304
-        height: 206
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0c004ea4b694ff94cbdafd4ad666a079
-      internalID: -277335654
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stones_2
-      rect:
-        serializedVersion: 2
-        x: 889
-        y: 676
-        width: 230
-        height: 192
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af39a814e0676bb45abb69601c5c5456
-      internalID: 1152497236
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stones_3
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 352
-        width: 380
-        height: 290
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 713b3dc290029574c9c34dd2885cfbd0
-      internalID: 1761967078
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stones_4
-      rect:
-        serializedVersion: 2
-        x: 451
-        y: 357
-        width: 346
-        height: 182
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 184d25acaf22f1b4ca9a623157a2899d
-      internalID: 440984718
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stones_5
-      rect:
-        serializedVersion: 2
-        x: 884
-        y: 347
-        width: 234
-        height: 207
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 84f9d31b8ee6a414a9e473c170d427d4
-      internalID: 90858005
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stones_6
+      name: small_rocks_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 366
-        height: 274
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c47ca369c2f0f9449d99c56d171b17e
-      internalID: 1517002429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stones_7
-      rect:
-        serializedVersion: 2
-        x: 489
         y: 0
-        width: 282
-        height: 207
+        width: 89
+        height: 46
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f3f236e5c32d1244b7b98c72e686d48
-      internalID: -797977751
+      spriteID: 24a6cf5b2dfb34741b328909fc4ec2e4
+      internalID: 1413944522
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_8
+      name: small_rocks_1
       rect:
         serializedVersion: 2
-        x: 883
-        y: 5
-        width: 229
-        height: 157
+        x: 119
+        y: 0
+        width: 91
+        height: 51
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,8 +158,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1dc5b664f45e00941a38b52251829981
-      internalID: -460724582
+      spriteID: c707f461aa8a6ea4599ca30696fbb442
+      internalID: -843066602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_rocks_2
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 0
+        width: 88
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9051e70a1710e24aa4c775fff411463
+      internalID: -509433904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_rocks_3
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 0
+        width: 94
+        height: 49
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c25d84a705a4f44194f0eee3f1528eb
+      internalID: -1321464451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_rocks_4
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 0
+        width: 92
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fd0a4b3228243c4cb2c1883e8ee5137
+      internalID: 1007277520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_rocks_5
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 0
+        width: 96
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 718bf13135471ab4abb43a42fc93062a
+      internalID: 1330718069
       vertices: []
       indices: 
       edges: []
@@ -314,7 +251,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4f3e27c93c477f24a9408969736209fc
+    spriteID: 32b8f6b3acb360f4dbf527fd15ee5c11
     internalID: 0
     vertices: []
     indices: 
@@ -322,15 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      stones_0: -884391830
-      stones_1: -277335654
-      stones_2: 1152497236
-      stones_3: 1761967078
-      stones_4: 440984718
-      stones_5: 90858005
-      stones_6: 1517002429
-      stones_7: -797977751
-      stones_8: -460724582
+      small_rocks_0: 1413944522
+      small_rocks_1: -843066602
+      small_rocks_2: -509433904
+      small_rocks_3: -1321464451
+      small_rocks_4: 1007277520
+      small_rocks_5: 1330718069
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

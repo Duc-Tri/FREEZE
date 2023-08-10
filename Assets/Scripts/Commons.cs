@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace IHateWinter
 {
-    public enum RESOURCE : ushort { NONE = 0, TREE, STONE }
+    public enum RESOURCE : ushort { NONE = 0, TREE, STONE,FLINT }
 
     public enum ITEM : ushort { NONE = 0, WOOD, STONE }
 

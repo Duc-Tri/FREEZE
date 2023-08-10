@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 32763391a9cce9241978626f5035aa5e
+guid: a6277baabf07bfe43b3ec64dab328b20
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -46,9 +46,9 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 0
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stones_0
+      name: rocks_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 678
-        width: 341
-        height: 238
+        x: 24
+        y: 291
+        width: 164
+        height: 130
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2e2470d33afeea48a3ad34983f98ae4
-      internalID: -884391830
+      spriteID: 48593e9d9e7a1684c866b7f489351bf9
+      internalID: 1368342313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_1
+      name: rocks_1
       rect:
         serializedVersion: 2
-        x: 445
-        y: 679
-        width: 304
-        height: 206
+        x: 204
+        y: 293
+        width: 180
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c004ea4b694ff94cbdafd4ad666a079
-      internalID: -277335654
+      spriteID: c9cabef39ebae5247acf8e1be6435412
+      internalID: -227375296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_2
+      name: rocks_2
       rect:
         serializedVersion: 2
-        x: 889
-        y: 676
-        width: 230
-        height: 192
+        x: 407
+        y: 295
+        width: 175
+        height: 129
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af39a814e0676bb45abb69601c5c5456
-      internalID: 1152497236
+      spriteID: 7e23a81da8db93049be3145b85e3dacc
+      internalID: 447024812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_3
+      name: rocks_3
       rect:
         serializedVersion: 2
-        x: 2
-        y: 352
-        width: 380
-        height: 290
+        x: 605
+        y: 291
+        width: 187
+        height: 136
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 713b3dc290029574c9c34dd2885cfbd0
-      internalID: 1761967078
+      spriteID: 9499850bf00b4894faf5ee698d1ff9ef
+      internalID: 1176951265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_4
+      name: rocks_4
       rect:
         serializedVersion: 2
-        x: 451
-        y: 357
-        width: 346
-        height: 182
+        x: 1
+        y: 163
+        width: 191
+        height: 117
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 184d25acaf22f1b4ca9a623157a2899d
-      internalID: 440984718
+      spriteID: 4c28f354cc107664392bccf5c63bccaf
+      internalID: 1098670883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_5
+      name: rocks_5
       rect:
         serializedVersion: 2
-        x: 884
-        y: 347
-        width: 234
-        height: 207
+        x: 225
+        y: 155
+        width: 197
+        height: 139
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84f9d31b8ee6a414a9e473c170d427d4
-      internalID: 90858005
+      spriteID: 5de605a282ad87940b68dfb9024a1027
+      internalID: 89090993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_6
+      name: rocks_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 154
+        width: 188
+        height: 131
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bba705b2e7661044d9f4fec613a756ee
+      internalID: 1743284065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rocks_8
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 164
+        width: 139
+        height: 118
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e97705eb69551147880435dc059cda3
+      internalID: 720777523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rocks_9
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 366
-        height: 274
+        y: 6
+        width: 203
+        height: 139
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c47ca369c2f0f9449d99c56d171b17e
-      internalID: 1517002429
+      spriteID: 15c014d9a985109449ca9f6ebfc62af2
+      internalID: -807053960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_7
+      name: rocks_10
       rect:
         serializedVersion: 2
-        x: 489
-        y: 0
-        width: 282
-        height: 207
+        x: 220
+        y: 10
+        width: 145
+        height: 142
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +326,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f3f236e5c32d1244b7b98c72e686d48
-      internalID: -797977751
+      spriteID: e6dcac77e95a1dd49bee240d47e377da
+      internalID: 1748248169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_8
+      name: rocks_11
       rect:
         serializedVersion: 2
-        x: 883
+        x: 383
         y: 5
-        width: 229
-        height: 157
+        width: 175
+        height: 139
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,8 +347,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1dc5b664f45e00941a38b52251829981
-      internalID: -460724582
+      spriteID: e6dfec954f6031e46919ebbc51b5904e
+      internalID: -1146943639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rocks_12
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 0
+        width: 207
+        height: 145
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f6a2a64d6b87044f88cddd1160ec620
+      internalID: 930908499
       vertices: []
       indices: 
       edges: []
@@ -314,7 +377,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4f3e27c93c477f24a9408969736209fc
+    spriteID: 81a283fae0505ce48bb7e1c8f2d2c87b
     internalID: 0
     vertices: []
     indices: 
@@ -322,15 +385,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      stones_0: -884391830
-      stones_1: -277335654
-      stones_2: 1152497236
-      stones_3: 1761967078
-      stones_4: 440984718
-      stones_5: 90858005
-      stones_6: 1517002429
-      stones_7: -797977751
-      stones_8: -460724582
+      rocks_0: 1368342313
+      rocks_1: -227375296
+      rocks_10: 1748248169
+      rocks_11: -1146943639
+      rocks_12: 930908499
+      rocks_2: 447024812
+      rocks_3: 1176951265
+      rocks_4: 1098670883
+      rocks_5: 89090993
+      rocks_6: -93685483
+      rocks_7: 1743284065
+      rocks_8: 720777523
+      rocks_9: -807053960
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

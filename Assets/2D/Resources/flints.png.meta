@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 32763391a9cce9241978626f5035aa5e
+guid: 75283218734a9524d8c5411ea97dc237
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,8 +48,8 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 498, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -74,7 +74,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stones_0
+      name: flints_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 678
-        width: 341
-        height: 238
+        x: 9
+        y: 429
+        width: 136
+        height: 93
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2e2470d33afeea48a3ad34983f98ae4
-      internalID: -884391830
+      spriteID: 79ace0bdeb8fa8e45b810c81e9b60a68
+      internalID: -1028260150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_1
+      name: flints_1
       rect:
         serializedVersion: 2
-        x: 445
-        y: 679
-        width: 304
-        height: 206
+        x: 233
+        y: 427
+        width: 112
+        height: 111
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c004ea4b694ff94cbdafd4ad666a079
-      internalID: -277335654
+      spriteID: f3c6d07aab12bd849bad2eb76bbfa58b
+      internalID: -1362434198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_2
+      name: flints_2
       rect:
         serializedVersion: 2
-        x: 889
-        y: 676
-        width: 230
-        height: 192
+        x: 441
+        y: 426
+        width: 141
+        height: 104
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af39a814e0676bb45abb69601c5c5456
-      internalID: 1152497236
+      spriteID: b77f7ea62b5443141881bd7764f92033
+      internalID: 1610716110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_3
+      name: flints_3
       rect:
         serializedVersion: 2
-        x: 2
-        y: 352
-        width: 380
-        height: 290
+        x: 658
+        y: 429
+        width: 136
+        height: 101
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,62 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 713b3dc290029574c9c34dd2885cfbd0
-      internalID: 1761967078
+      spriteID: f92b2f4fb9a0e1d4989ab724483f909a
+      internalID: 53552233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_4
-      rect:
-        serializedVersion: 2
-        x: 451
-        y: 357
-        width: 346
-        height: 182
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 184d25acaf22f1b4ca9a623157a2899d
-      internalID: 440984718
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stones_5
-      rect:
-        serializedVersion: 2
-        x: 884
-        y: 347
-        width: 234
-        height: 207
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 84f9d31b8ee6a414a9e473c170d427d4
-      internalID: 90858005
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stones_6
+      name: flints_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 366
-        height: 274
+        y: 287
+        width: 149
+        height: 107
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +221,167 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c47ca369c2f0f9449d99c56d171b17e
-      internalID: 1517002429
+      spriteID: a5b2e6a708fdabc4d9867b4bf77f0988
+      internalID: -567604236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_7
+      name: flints_5
       rect:
         serializedVersion: 2
-        x: 489
+        x: 233
+        y: 287
+        width: 108
+        height: 114
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1186e572dfb8b84bbd357fc36072228
+      internalID: 1287863324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flints_6
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 286
+        width: 128
+        height: 101
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 796eba3983ae93c4ab9feeac394b5390
+      internalID: 1609529210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flints_7
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 286
+        width: 116
+        height: 114
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e12438924a9f2c7459ba4e64068694c8
+      internalID: -1317457277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flints_8
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 150
+        width: 145
+        height: 103
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 362acb2432e1deb4f83e281e840454d7
+      internalID: 42256343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flints_9
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 150
+        width: 148
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46083b5d25122e24393fc1f5694b73a9
+      internalID: -1182154385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flints_10
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 151
+        width: 145
+        height: 99
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0841f107c9437a04580bd1361eff5888
+      internalID: 927787444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flints_11
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 152
+        width: 132
+        height: 106
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94e253e35fe4bf346b6a9b47babd0c9b
+      internalID: 681071957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flints_12
+      rect:
+        serializedVersion: 2
+        x: 6
         y: 0
-        width: 282
-        height: 207
+        width: 136
+        height: 104
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +389,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f3f236e5c32d1244b7b98c72e686d48
-      internalID: -797977751
+      spriteID: aac2aa6a51069d240885aa0168ab1291
+      internalID: 1732566217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stones_8
+      name: flints_13
       rect:
         serializedVersion: 2
-        x: 883
-        y: 5
-        width: 229
-        height: 157
+        x: 216
+        y: 0
+        width: 153
+        height: 112
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,8 +410,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1dc5b664f45e00941a38b52251829981
-      internalID: -460724582
+      spriteID: fe7c35dac734efd41adc27f071446d6a
+      internalID: -265875747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flints_14
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 0
+        width: 152
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30bc6518f6c11454a8022d83ff1ca9f8
+      internalID: 1143079365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flints_15
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 0
+        width: 140
+        height: 106
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 014b05cf79e939843bb67da106a3d425
+      internalID: 941249000
       vertices: []
       indices: 
       edges: []
@@ -314,23 +461,30 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4f3e27c93c477f24a9408969736209fc
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      stones_0: -884391830
-      stones_1: -277335654
-      stones_2: 1152497236
-      stones_3: 1761967078
-      stones_4: 440984718
-      stones_5: 90858005
-      stones_6: 1517002429
-      stones_7: -797977751
-      stones_8: -460724582
+      flints_0: -1028260150
+      flints_1: -1362434198
+      flints_10: 927787444
+      flints_11: 681071957
+      flints_12: 1732566217
+      flints_13: -265875747
+      flints_14: 1143079365
+      flints_15: 941249000
+      flints_2: 1610716110
+      flints_3: 53552233
+      flints_4: -567604236
+      flints_5: 1287863324
+      flints_6: 1609529210
+      flints_7: -1317457277
+      flints_8: 42256343
+      flints_9: -1182154385
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

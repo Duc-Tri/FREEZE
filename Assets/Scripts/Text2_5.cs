@@ -20,9 +20,9 @@ namespace IHateWinter
                 textMeshPro = GetComponentInChildren<TextMeshPro>();
 
             if (textMeshPro != null)
-                LookAtCameraManager.AddTextTransform(textMeshPro.transform);
+                BillBoardingManager.AddTextTransform(textMeshPro.transform);
             else
-                LookAtCameraManager.AddTextTransform(this.transform);
+                BillBoardingManager.AddTextTransform(this.transform);
         }
     }
 }

@@ -7,16 +7,6 @@ namespace IHateWinter
     // An object which can be put into Inventory
     public interface IInventoryItem
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        public string Name { get; }
     }
 }

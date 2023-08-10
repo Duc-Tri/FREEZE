@@ -19,6 +19,11 @@ namespace IHateWinter
 
         [SerializeField][Range(0, 200000)] private int numberStones = 1;
 
+        [SerializeField] private Transform flintPrefab;
+
+        [SerializeField][Range(0, 200000)] private int numberFlints = 1;
+
+
         [SerializeField][Range(0, 5000)] private float maxXZ = 100;
 
         public static GAME_MODE GameMode { get; private set; }
@@ -29,21 +34,21 @@ namespace IHateWinter
             treeManager = new TreeManager();
             if (player == null) player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player2_5>();
 
-
-            for (int i = 0; i < numberTrees; i++)
-            {
-                Transform tree = Instantiate(treePrefab, this.transform);
-                tree.position = new Vector3(2f * Random.value * maxXZ - maxXZ, 0.5f, 2f * Random.value * maxXZ - maxXZ);
-                tree.name = "@tree-" + i;
-            }
-            for (int i = 0; i < numberStones; i++)
-            {
-                Transform stone = Instantiate(stonePrefab, this.transform);
-                stone.position = new Vector3(2f * Random.value * maxXZ - maxXZ, 0.5f, 2f * Random.value * maxXZ - maxXZ);
-                stone.name = "@stone-" + i;
-            }
+            InstantiateResource(flintPrefab, numberFlints, "@flint-");
+            InstantiateResource(stonePrefab, numberStones, "@stone-");
+            InstantiateResource(treePrefab, numberTrees, "@tree-");
 
             Injection();
+        }
+
+        private void InstantiateResource(Transform resourcePrefab, int numberResource, string nameTemplate)
+        {
+            for (int i = 0; i < numberResource; i++)
+            {
+                Transform r = Instantiate(resourcePrefab, this.transform);
+                r.position = new Vector3(2f * Random.value * maxXZ - maxXZ, 0.5f, 2f * Random.value * maxXZ - maxXZ);
+                r.name = nameTemplate + i;
+            }
         }
 
         void Start()
@@ -53,12 +58,16 @@ namespace IHateWinter
 
         void Injection()
         {
+            MouseManager.OnHoverOnResource -= TextHelperManager.TextHover;
+            MouseManager.OnHoverOnResource += TextHelperManager.TextHover;
+
             MouseManager.OnClickOnFloor -= player.MoveAgent;
             MouseManager.OnClickOnFloor += player.MoveAgent;
 
-            MouseManager.OnHoverOnResource -= TextHelperManager.TextHover;
-            MouseManager.OnHoverOnResource += TextHelperManager.TextHover;
+            MouseManager.OnActOnResource -= player.ActOnResource;
+            MouseManager.OnActOnResource += player.ActOnResource;
         }
+
     }
 
 }

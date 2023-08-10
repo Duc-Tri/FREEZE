@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace IHateWinter
 {
-
-    public class LookAtCameraManager : MonoBehaviour
+    // Make all billboards look at camera
+    public class BillBoardingManager : MonoBehaviour
     {
         public static Camera mainCamera;
         private Transform mainCameraTransform;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,13 +21,13 @@ namespace IHateWinter
             mainCamera = Camera.main;
             mainCameraTransform = Camera.main.transform;
             spriteTransform = spriteRenderer.transform;
-            agent=GetComponent<NavMeshAgent>();
+            agent = GetComponent<NavMeshAgent>();
 
             NavMeshHit hit;
             if (NavMesh.SamplePosition(transform.position, out hit, 100, NavMesh.AllAreas))
                 transform.position = hit.position;
 
-            LookAtCameraManager.AddSpriteTransform(spriteTransform);
+            BillBoardingManager.AddSpriteTransform(spriteTransform);
         }
 
         public void MoveAgent(Vector3 pos)
@@ -44,6 +45,14 @@ namespace IHateWinter
             */
         }
 
+        internal void ActOnResource(AResource resource)
+        {
+            if (resource is IInventoryItem i)
+            {
+                if (Inventory.Instance.TryAdd(i))
+                    PoolerGameobjects.Instance.SaveToPool(resource.gameObject);
+            }
+        }
     }
 
 }

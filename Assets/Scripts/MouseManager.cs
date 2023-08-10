@@ -13,6 +13,7 @@ namespace IHateWinter
 
         public static Action<Vector3> OnClickOnFloor;
         public static Action<AResource> OnHoverOnResource;
+        public static Action<AResource> OnActOnResource;
         private Collider oldCollided;
 
         protected virtual void Awake()
@@ -26,6 +27,7 @@ namespace IHateWinter
 
         RaycastHit raycastHit;
         NavMeshHit navmeshHit;
+
         void Update()
         {
             if (GameManager.GameMode == GAME_MODE.IN_GAME && !EventSystem.current.IsPointerOverGameObject())
@@ -46,7 +48,8 @@ namespace IHateWinter
                     else if (Input.GetMouseButtonDown(1))
                     {
                         // Right mouse button clicked =============================================
-
+                        if (raycastHit.collider.CompareTag("Resource"))
+                            OnActOnResource?.Invoke(raycastHit.collider.gameObject.GetComponent<AResource>());
                     }
                     else if (oldCollided != raycastHit.collider)
                     {

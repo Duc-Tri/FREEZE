@@ -1,34 +1,33 @@
-using IHateWinter;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TextHelperManager : MonoBehaviour
+namespace IHateWinter
 {
-    static TextMeshPro text;
-    static Transform staticTransform;
-    private void Awake()
+    public class TextHelperManager : MonoBehaviour
     {
-        staticTransform = this.transform;
-        text = GetComponent<TextMeshPro>();
-    }
-
-    public static void TextHover(AResource resource)
-    {
-        if (resource != null && Vector3.Distance(GameManager.player.transform.position, resource.transform.position) < Player2_5.MAX_DISTANCE_TO_HARVEST)
+        static TextMeshPro text;
+        static Transform staticTransform;
+        private void Awake()
         {
-            Vector3 v = resource.transform.position;
-            v.y += resource.GetComponent<NavMeshObstacle>().size.y;
-            staticTransform.position = v;
-
-            text.text = $"{resource.name} / {resource.type} / {resource.tag}";
+            staticTransform = this.transform;
+            text = GetComponent<TextMeshPro>();
         }
-        else
+
+        public static void TextHover(AResource resource)
         {
-            staticTransform.position = Vector3.one * -1000;
+            if (resource != null && Vector3.Distance(GameManager.player.transform.position, resource.transform.position) < Player2_5.MAX_DISTANCE_TO_HARVEST)
+            {
+                Vector3 v = resource.transform.position;
+                v.y += resource.GetComponent<NavMeshObstacle>().size.y;
+                staticTransform.position = v;
+
+                text.text = $"{resource.name} / {resource.type} / {resource.tag}";
+            }
+            else
+            {
+                staticTransform.position = Vector3.one * -1000;
+            }
         }
     }
 }

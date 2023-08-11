@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 namespace IHateWinter
 {
-
-
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private GameData gameData;
@@ -59,8 +57,15 @@ namespace IHateWinter
 
             MouseManager.OnActOnResource -= player.ActOnResource;
             MouseManager.OnActOnResource += player.ActOnResource;
+
+            Player2_5.OnPlayerDead -= GameOver;
+            Player2_5.OnPlayerDead += GameOver;
         }
 
+        private void GameOver()
+        {
+            SceneManager.LoadScene("INTRO");
+        }
 
         private void Update()
         {

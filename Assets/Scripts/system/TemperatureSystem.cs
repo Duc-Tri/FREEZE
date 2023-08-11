@@ -1,18 +1,20 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace IHateWinter
 {
-
-    // To call from Gamemanager
     public class TemperatureSystem
     {
         private static TemperatureSystem instance;
 
         private TemperatureTime[] temperatureTimes;
         private int currentIndex;
-        private float currentTime, currentTemperature, lastTime, startTemp, endTemp, timeSpan;
+        private float currentTime, lastTime, startTemp, endTemp, timeSpan;
+        public static float currentTemperature { get; private set; }
+
+        public static Action<float> OnTemperatureChange;
 
         public static TemperatureSystem Instance
         {
@@ -26,6 +28,7 @@ namespace IHateWinter
 
         public TemperatureSystem() { }
 
+        // To call from Gamemanager
         public void Update(float deltaTime)
         {
             currentTime += deltaTime;
@@ -43,21 +46,23 @@ namespace IHateWinter
                 endTemp = temperatureTimes[currentIndex].temperature;
 
                 //Debug.Log($"■■■ currentTime:{currentTime:0.00} currentTemp:{currentTemperature:0.00} ■ (startTemp{startTemp} -> endTemp{endTemp})");
+                OnTemperatureChange?.Invoke(currentTemperature);
             }
             else if (currentIndex < temperatureTimes.Length)
             {
                 currentTemperature = Mathf.Lerp(startTemp, endTemp, (currentTime - lastTime) / timeSpan);
                 //Debug.Log($"currentTime:{currentTime:0.00} currentTemp:{currentTemperature:0.00} ■ (startTemp{startTemp} -> endTemp{endTemp})");
+                OnTemperatureChange?.Invoke(currentTemperature);
             }
         }
 
         public void Init(TemperatureTime[] tt)
         {
-            temperatureTimes = tt;
-
             //  (temperatureTimes[0].time > 0) ALWAYS THE CASE
             for (int i = 1; i < tt.Length; i++)
                 Assert.IsTrue(tt[i].time > 0 && tt[i].time > tt[i - 1].time);
+
+            temperatureTimes = tt;
 
             currentTime = 0;
             currentIndex = 0;
@@ -70,8 +75,9 @@ namespace IHateWinter
     [Serializable]
     public struct TemperatureTime
     {
-        public float time; // in seconds
+        // Evolution of Temperatures by time
         public float temperature;
+        public float time; // in seconds
     }
 
 }

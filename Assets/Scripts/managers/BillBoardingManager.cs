@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,11 +8,13 @@ namespace IHateWinter
     {
         public static Camera mainCamera;
         private Transform mainCameraTransform;
-        private static List<Transform> spritesTransform = new List<Transform>();
-        private static List<Transform> textsTransform = new List<Transform>();
+        private static List<Transform> spritesTransform;
+        private static List<Transform> textsTransform;
 
         private void Awake()
         {
+            spritesTransform = new List<Transform>();
+            textsTransform = new List<Transform>();
             mainCamera = Camera.main;
             mainCameraTransform = Camera.main.transform;
         }
@@ -55,6 +55,7 @@ namespace IHateWinter
         {
             spritesTransform.Remove(transform);
         }
+
     }
 
 }

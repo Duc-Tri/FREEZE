@@ -8,13 +8,12 @@ namespace IHateWinter
 
     public class Text2_5 : MonoBehaviour
     {
-
         [SerializeField]
         private TextMeshPro textMeshPro;
 
         static Sprite[] trees;
 
-        private void Awake()
+        private void Start()
         {
             if (textMeshPro == null)
                 textMeshPro = GetComponentInChildren<TextMeshPro>();

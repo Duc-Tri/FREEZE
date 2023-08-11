@@ -7,10 +7,9 @@ namespace IHateWinter
 {
     public class MouseManager : MonoBehaviour
     {
-        [SerializeField] private Camera mainCamera;
+        [SerializeField][Range(1, 500)] private float distanceRaycast = 100f;
 
-        [SerializeField][Range(1, 500)] private float distanceRaycast = 35f;
-
+        private Camera mainCamera;
         public static Action<Vector3> OnClickOnFloor;
         public static Action<AResource> OnHoverOnResource;
         public static Action<AResource> OnActOnResource;

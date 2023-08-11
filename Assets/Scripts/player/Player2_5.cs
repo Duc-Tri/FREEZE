@@ -15,6 +15,7 @@ namespace IHateWinter
         private Camera mainCamera;
         private Transform mainCameraTransform;
         private NavMeshAgent agent;
+        public static float MAX_DISTANCE_TO_HARVEST = 2.5f;
 
         private void Awake()
         {
@@ -47,9 +48,9 @@ namespace IHateWinter
 
         internal void ActOnResource(AResource resource)
         {
-            if (Vector3.Distance(transform.position, resource.transform.position) < 2.5f && resource is IInventoryItem i)
+            if (Vector3.Distance(transform.position, resource.transform.position) < MAX_DISTANCE_TO_HARVEST && resource is IHarvestable i)
             {
-                if (Inventory.Instance.TryAdd(i))
+                if (Inventory.Instance.TryAdd(resource))
                     PoolerGameobjects.Instance.SaveToPool(resource.gameObject);
             }
         }

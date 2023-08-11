@@ -9,36 +9,29 @@ namespace IHateWinter
 
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] private GameData gameData;
+
         TreeManager treeManager;
-
-        [SerializeField] private Transform treePrefab;
-
-        [SerializeField][Range(0, 200000)] private int numberTrees = 1;
-
-        [SerializeField] private Transform stonePrefab;
-
-        [SerializeField][Range(0, 200000)] private int numberStones = 1;
-
-        [SerializeField] private Transform flintPrefab;
-
-        [SerializeField][Range(0, 200000)] private int numberFlints = 1;
-
 
         [SerializeField][Range(0, 5000)] private float maxXZ = 100;
 
         public static GAME_MODE GameMode { get; private set; }
-        private static Player2_5 player;
+        public static Player2_5 player;
+        public static GameManager Instance { get; private set; }
+        public static GameData GameData { get { return Instance.gameData; } }
 
         private void Awake()
         {
+            Instance = this;
             treeManager = new TreeManager();
             if (player == null) player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player2_5>();
 
-            InstantiateResource(flintPrefab, numberFlints, "@flint-");
-            InstantiateResource(stonePrefab, numberStones, "@stone-");
-            InstantiateResource(treePrefab, numberTrees, "@tree-");
+            foreach (var item in gameData.itemsToInstanciate)
+                InstantiateResource(item.prefab, item.count, item.namePrefix);
 
-            Injection();
+            TemperatureSystem.Instance.Init(gameData.temperatureTimes);
+
+            DependanceInjection();
         }
 
         private void InstantiateResource(Transform resourcePrefab, int numberResource, string nameTemplate)
@@ -56,7 +49,7 @@ namespace IHateWinter
             GameMode = GAME_MODE.IN_GAME; // TODO : change it when we have menu !
         }
 
-        void Injection()
+        void DependanceInjection()
         {
             MouseManager.OnHoverOnResource -= TextHelperManager.TextHover;
             MouseManager.OnHoverOnResource += TextHelperManager.TextHover;
@@ -68,6 +61,11 @@ namespace IHateWinter
             MouseManager.OnActOnResource += player.ActOnResource;
         }
 
+
+        private void Update()
+        {
+            TemperatureSystem.Instance.Update(Time.deltaTime);
+        }
     }
 
 }

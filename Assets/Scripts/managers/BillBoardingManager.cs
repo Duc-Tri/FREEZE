@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,6 +49,11 @@ namespace IHateWinter
                 eulerAngles.x = 0;
                 spriteTransform.eulerAngles = eulerAngles;
             }
+        }
+
+        internal static void RemoveSpriteTransform(Transform transform)
+        {
+            spritesTransform.Remove(transform);
         }
     }
 

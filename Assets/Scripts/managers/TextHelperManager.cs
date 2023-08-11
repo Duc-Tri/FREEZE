@@ -16,10 +16,9 @@ public class TextHelperManager : MonoBehaviour
         text = GetComponent<TextMeshPro>();
     }
 
-
     public static void TextHover(AResource resource)
     {
-        if (resource != null)
+        if (resource != null && Vector3.Distance(GameManager.player.transform.position, resource.transform.position) < Player2_5.MAX_DISTANCE_TO_HARVEST)
         {
             Vector3 v = resource.transform.position;
             v.y += resource.GetComponent<NavMeshObstacle>().size.y;

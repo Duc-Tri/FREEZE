@@ -13,23 +13,35 @@ namespace IHateWinter
     public class Inventory : MonoBehaviour
     {
         private const int INVENTORY_CAPACITY = 10;
-        public IInventoryItem[] Items = new IInventoryItem[INVENTORY_CAPACITY];
+        public InventoryItem[] Items = new InventoryItem[INVENTORY_CAPACITY];
 
-        public Button[] ButtonItems;
+        public ButtonItem[] ButtonItems;
         private Canvas canvas;
 
         public static Inventory Instance;
 
-        public bool TryAdd(IInventoryItem ii)
+        private void Awake()
+        {
+            Instance = this;
+            canvas = GetComponent<Canvas>();
+
+            // TODO: instantiate Button dynamically dude !
+            ButtonItems = canvas.GetComponentsInChildren<ButtonItem>();
+
+            Assert.AreEqual(INVENTORY_CAPACITY, ButtonItems.Length);
+            UpdateUI();
+        }
+
+        public bool TryAdd(AResource resource)
         {
             for (int i = 0; i < Items.Length; i++)
             {
                 if (Items[i] == null)
                 {
-                    Items[i] = ii;
+                    Items[i] = GameManager.GameData.SearchItemByResourceType(resource.type);
                     UpdateUI();
 
-                    Debug.Log("INVENTORY: " + String.Join(" ■ ", Items.Select(v => v?.Name)));
+                    Debug.Log("INVENTORY: " + String.Join(" ■ ", Items.Select(v => v?.name)));
 
                     return true;
                 }
@@ -42,24 +54,10 @@ namespace IHateWinter
         {
             for (int i = 0; i < INVENTORY_CAPACITY; i++)
             {
-                Button button = ButtonItems[i];
-
-                button.GetComponentInChildren<TextMeshProUGUI>().text = (Items[i] != null) ? Items[i].Name : "0";
+                ButtonItems[i].SetItem(Items[i]);
             }
-
         }
 
-        private void Awake()
-        {
-            Instance = this;
-            canvas = GetComponent<Canvas>();
-
-            // TODO: instantiate Button dynamically dude !
-            ButtonItems = canvas.GetComponentsInChildren<Button>();
-
-            Assert.AreEqual(INVENTORY_CAPACITY, ButtonItems.Length);
-            UpdateUI();
-        }
 
     }
 

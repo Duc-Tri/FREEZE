@@ -19,8 +19,7 @@ namespace IHateWinter
                 // weird ... objects are still destroyed here
             }
 
-            if (textsTransform != null)
-                Debug.Log("textsTransform.c=" + textsTransform.Count);
+            //if (textsTransform != null) Debug.Log("textsTransform.c=" + textsTransform.Count);
 
             spritesTransform = new List<Transform>();
             textsTransform = new List<Transform>();

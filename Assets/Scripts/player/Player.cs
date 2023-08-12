@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 namespace IHateWinter
 {
 
-    public class Player2_5 : MonoBehaviour
+    public class Player : MonoBehaviour
     {
         [SerializeField] private bool cheatInvincible = false; // cheater !
 
@@ -32,6 +32,7 @@ namespace IHateWinter
         private bool alive;
 
         public static Action<float> OnBodyTemperatureChange;
+        public static Action OnPlayerStart;
         public static Action OnPlayerDead;
 
         private void Awake()
@@ -48,6 +49,8 @@ namespace IHateWinter
 
         private void Start()
         {
+            OnPlayerStart?.Invoke();
+
             agent = GetComponent<NavMeshAgent>();
             // after Awake of BillBoardingManager creations of objects
             BillBoardingManager.StartAddSpriteTransform(spriteTransform);
@@ -58,7 +61,7 @@ namespace IHateWinter
 
         public void MoveAgent(Vector3 pos)
         {
-            agent.SetDestination(pos);
+            agent?.SetDestination(pos);
         }
 
         internal void ActOnResource(AResource resource)

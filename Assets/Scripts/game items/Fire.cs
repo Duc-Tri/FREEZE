@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace IHateWinter
 {
-    public class Fire2_5 : MonoBehaviour
+    public class Fire : MonoBehaviour
     {
         [SerializeField] Transform billboard;
 

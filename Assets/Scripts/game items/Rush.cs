@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace IHateWinter
 {
-    public class Rush2_5 : AResource, IHarvestable
+    public class Rush : AResource, IHarvestable
     {
         string IHarvestable.Name { get => name; }
 
@@ -12,6 +12,5 @@ namespace IHateWinter
         }
 
     }
-
 
 }

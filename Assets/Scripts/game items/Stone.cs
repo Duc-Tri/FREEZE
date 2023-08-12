@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace IHateWinter
 {
-    public class Tree2_5 : AResource
+    public class Stone : AResource
     {
         private void Awake()
         {
-            Init(RESOURCE.TREE);
+            Init(RESOURCE.STONE);
         }
 
     }

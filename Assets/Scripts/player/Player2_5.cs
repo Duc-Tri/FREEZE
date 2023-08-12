@@ -10,11 +10,24 @@ namespace IHateWinter
 
     public class Player2_5 : MonoBehaviour
     {
-        public static float MAX_DISTANCE_TO_HARVEST = 2.5f;
+        [SerializeField] private bool cheatInvincible = false; // cheater !
+
+        public const float MAX_DISTANCE_TO_HARVEST = 2.5f;
+
+        public const float COOLING_TEMPERATURE = 20;
+        public const float LOWEST_BODY_TEMPERATURE_BEARABLE = 10;
+
+        public const float HEATING_TEMPERATURE = 30;
+        public const float HIGHEST_BODY_TEMPERATURE_BEARABLE = 50;
+
+        [SerializeField][Range(0.01f, 10f)] private float SPEED_FIRE_WARM = 10f;
+        [SerializeField][Range(0.01f, 10f)] private float COOLING_FACTOR = 0.2f;
+
         [SerializeField] private SpriteRenderer spriteRenderer;
         private Transform spriteTransform;
         private NavMeshAgent agent;
 
+        [SerializeField] private float warmEffect; // per second
         private float bodyTemperature;  // celsius
         private bool alive;
 
@@ -28,7 +41,6 @@ namespace IHateWinter
 
             spriteTransform = spriteRenderer.transform;
 
-            agent = GetComponent<NavMeshAgent>();
             NavMeshHit hit;
             if (NavMesh.SamplePosition(transform.position, out hit, 100, NavMesh.AllAreas))
                 transform.position = hit.position;
@@ -36,8 +48,9 @@ namespace IHateWinter
 
         private void Start()
         {
+            agent = GetComponent<NavMeshAgent>();
             // after Awake of BillBoardingManager creations of objects
-            BillBoardingManager.AddSpriteTransform(spriteTransform);
+            BillBoardingManager.StartAddSpriteTransform(spriteTransform);
 
             // after the awake of Player2_5.OnBodyTemperatureChange += UpdatePlayerTemp
             OnBodyTemperatureChange?.Invoke(bodyTemperature);
@@ -61,25 +74,40 @@ namespace IHateWinter
         {
             if (!alive) return;
 
-            if (Mathf.Abs(bodyTemperature) < 1f)
+            if (Mathf.Abs(bodyTemperature) < LOWEST_BODY_TEMPERATURE_BEARABLE)
             {
-                alive = false;
-                OnPlayerDead?.Invoke();
+                if (!cheatInvincible)
+                {
+                    alive = false;
+                    OnPlayerDead?.Invoke();
+                }
             }
 
-            float temp = TemperatureSystem.currentTemperature;
-            if (temp < 20)
+            float externTemp = TemperatureSystem.currentTemperature;
+            if (externTemp < COOLING_TEMPERATURE)
             {
-                bodyTemperature -= Mathf.Sqrt(Mathf.Abs(temp - 20)) * Time.deltaTime;
+                if (warmEffect > 0)
+                    bodyTemperature = MathF.Min(37, bodyTemperature + warmEffect * Time.deltaTime);
+                else if (bodyTemperature > LOWEST_BODY_TEMPERATURE_BEARABLE)
+                    bodyTemperature -= COOLING_FACTOR * Mathf.Sqrt(Mathf.Abs(externTemp - COOLING_TEMPERATURE)) * Time.deltaTime;
             }
             else
             {
-                bodyTemperature += Mathf.Sqrt(temp - 20) * Time.deltaTime;
+                bodyTemperature += Mathf.Sqrt(externTemp - COOLING_TEMPERATURE) * Time.deltaTime;
             }
 
             OnBodyTemperatureChange?.Invoke(bodyTemperature);
         }
 
+        internal void OutsideFireWarm()
+        {
+            warmEffect -= SPEED_FIRE_WARM;
+        }
+
+        internal void InsideFireWarm()
+        {
+            warmEffect += SPEED_FIRE_WARM;
+        }
     }
 
 }

@@ -5,13 +5,18 @@ using UnityEngine.SceneManagement;
 
 namespace IHateWinter
 {
-    public class ButtonPlay : MonoBehaviour
+    public class IntroButtons : MonoBehaviour
     {
 
         public void OnPlay()
         {
             SceneManager.LoadScene("I-HATE-WINTER");
         }
+
+        public void OnQuit()
+        {
+            Application.Quit();
+        }
+
     }
-     
 }

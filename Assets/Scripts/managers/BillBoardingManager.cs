@@ -13,15 +13,25 @@ namespace IHateWinter
 
         private void Awake()
         {
+            if (spritesTransform != null)
+            {
+                //Debug.Log("spritesTransform.c=" + spritesTransform.Count);
+                // weird ... objects are still destroyed here
+            }
+
+            if (textsTransform != null)
+                Debug.Log("textsTransform.c=" + textsTransform.Count);
+
             spritesTransform = new List<Transform>();
             textsTransform = new List<Transform>();
             mainCamera = Camera.main;
             mainCameraTransform = Camera.main.transform;
         }
 
-        public static void AddSpriteTransform(Transform st)
+        public static void StartAddSpriteTransform(Transform st)
         {
             spritesTransform.Add(st);
+            //Debug.Log("spritesTransform.c=" + spritesTransform.Count);
         }
 
         public static void AddTextTransform(Transform st)

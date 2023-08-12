@@ -41,7 +41,7 @@ namespace IHateWinter
 
         private void OnEnable()
         {
-            BillBoardingManager.AddSpriteTransform(spriteRenderer.transform);
+            BillBoardingManager.StartAddSpriteTransform(spriteRenderer.transform);
         }
 
         private void OnDisable()

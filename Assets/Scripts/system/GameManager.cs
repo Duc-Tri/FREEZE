@@ -34,7 +34,7 @@ namespace IHateWinter
 
         private void InstantiateResource(Transform resourcePrefab, int numberResource, string nameTemplate)
         {
-            for (int i = 0; i < numberResource; i++)
+            for (int i = 0; i < numberResource / 4; i++)
             {
                 Transform r = Instantiate(resourcePrefab, this.transform);
                 r.position = new Vector3(2f * Random.value * maxXZ - maxXZ, 0.5f, 2f * Random.value * maxXZ - maxXZ);
@@ -49,17 +49,37 @@ namespace IHateWinter
 
         void DependanceInjection()
         {
-            MouseManager.OnHoverOnResource -= TextHelperManager.TextHover;
+            RemoveListeners();
+
             MouseManager.OnHoverOnResource += TextHelperManager.TextHover;
-
-            MouseManager.OnClickOnFloor -= player.MoveAgent;
             MouseManager.OnClickOnFloor += player.MoveAgent;
-
-            MouseManager.OnActOnResource -= player.ActOnResource;
             MouseManager.OnActOnResource += player.ActOnResource;
 
-            Player2_5.OnPlayerDead -= GameOver;
             Player2_5.OnPlayerDead += GameOver;
+
+            Fire2_5.OnPlayerInsideFireWarm += player.InsideFireWarm;
+            Fire2_5.OnPlayerOutSideFireWarm += player.OutsideFireWarm;
+            Fire2_5.OnPlayerInsideFireWarm += GUITemperature.Instance.PlayerInsideFireWarm;
+            Fire2_5.OnPlayerOutSideFireWarm += GUITemperature.Instance.PlayerOutsideFireWarm;
+        }
+
+        private void OnDestroy()
+        {
+            RemoveListeners();
+        }
+
+        private void RemoveListeners()
+        {
+            MouseManager.OnHoverOnResource -= TextHelperManager.TextHover;
+            MouseManager.OnClickOnFloor -= player.MoveAgent;
+            MouseManager.OnActOnResource -= player.ActOnResource;
+
+            Player2_5.OnPlayerDead -= GameOver;
+
+            Fire2_5.OnPlayerInsideFireWarm -= player.InsideFireWarm;
+            Fire2_5.OnPlayerOutSideFireWarm -= player.OutsideFireWarm;
+            Fire2_5.OnPlayerInsideFireWarm -= GUITemperature.Instance.PlayerInsideFireWarm;
+            Fire2_5.OnPlayerOutSideFireWarm -= GUITemperature.Instance.PlayerOutsideFireWarm;
         }
 
         private void GameOver()

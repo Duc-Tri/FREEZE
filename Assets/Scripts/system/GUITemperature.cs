@@ -18,6 +18,7 @@ namespace IHateWinter
 
         private void Awake()
         {
+            background=GetComponentInChildren<Image>();
             Instance = this;
             playerTemp.text = environmentTemp.text = string.Empty;
 

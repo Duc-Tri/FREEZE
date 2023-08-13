@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 4790571459260858199}
   - component: {fileID: 8379502700197576343}
   m_Layer: 0
-  m_Name: Pinguin
+  m_Name: Penguin
   m_TagString: Pinguin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5220785207331816837}
+  state: 0
 --- !u!23 &6069688038830222167
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -204,7 +205,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
@@ -217,7 +218,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6905011283331880757}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Speed: 10
   m_Acceleration: 200
   avoidancePriority: 50

@@ -8,6 +8,8 @@ namespace IHateWinter
     [CreateAssetMenu(fileName = "GameData", menuName = "IHW/Game Data")]
     public class GameData : ScriptableObject
     {
+        public CraftingRecipe[] craftingRecipes;
+
         public TemperatureTime[] temperatureTimes;
 
         public InventoryItem[] allInventoryItems;
@@ -25,6 +27,17 @@ namespace IHateWinter
             return null;
         }
 
+        public InventoryItem SearchItemByToolType(TOOL type)
+        {
+            foreach (var item in allInventoryItems)
+            {
+                if (item.ToolType == type)
+                    return item;
+            }
+
+            return null;
+        }
+
     }
 
     [Serializable]
@@ -34,4 +47,20 @@ namespace IHateWinter
         public string namePrefix;
         public int count;
     }
+
+    [Serializable]
+    public struct CraftingRecipe
+    {
+        public CRAFT_TEMP wantedObject;
+        public Dictionary<RESOURCE, int> resources;
+        public ResourceNeeded[] resourcesNeeded;
+    }
+
+    [Serializable]
+    public struct ResourceNeeded
+    {
+        public RESOURCE resource;
+        public byte quantity;
+    }
+
 }

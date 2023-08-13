@@ -1,13 +1,20 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.AI.Navigation;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace IHateWinter
 {
+    // Responsible for adding and removing LISTENERS
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] public bool PlayerInvincible = false; // cheater !
+        [SerializeField] public bool CanAlwaysCraft = false; // cheater !
+
         [SerializeField] private GameData gameData;
 
         TreeManager treeManager;
@@ -19,12 +26,16 @@ namespace IHateWinter
         public static GAME_MODE GameMode { get; private set; }
         public static GameManager Instance { get; private set; }
         public static GameData GameData { get { return Instance.gameData; } }
+        public static List<Transform> allPenguins;
 
         private void OnEnable()
         {
             Instance = this;
+
             if (Player == null) Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             Player.gameObject.SetActive(false);
+
+            allPenguins = new List<Transform>();
         }
 
         private void Awake()
@@ -42,15 +53,17 @@ namespace IHateWinter
                 InstantiateResource(item.prefab, item.count, item.namePrefix);
 
             TemperatureSystem.Instance.Init(gameData.temperatureTimes);
+
         }
 
         IEnumerator Start()
         {
             AddListeners();
-
             GameMode = GAME_MODE.IN_GAME; // TODO : change it when we have menu !
 
-            yield return new WaitForSeconds(1.5f);
+            //////////////////////// to wait for Nawmesh loading, etc.
+            yield return new WaitForSeconds(2.5f);
+            //yield return null;
 
             Player.gameObject.SetActive(true);
         }
@@ -60,51 +73,113 @@ namespace IHateWinter
             for (int i = 0; i < numberResource; i++)
             {
                 Transform r = Instantiate(resourcePrefab, this.transform);
-                r.position = new Vector3(Random.Range(-halfObjectsMaxX, halfObjectsMaxX), 0, Random.Range(-halfObjectsMaxZ, halfObjectsMaxZ));
+
+                float randX = RandomRangeNotTooNearZero(-halfObjectsMaxX, halfObjectsMaxX, 3);
+                float randz = RandomRangeNotTooNearZero(-halfObjectsMaxZ, halfObjectsMaxX, 3);
+
+                r.position = new Vector3(randX, 0, randz);
                 r.name = nameTemplate + i;
             }
         }
 
+        private float RandomRangeNotTooNearZero(float min, float max, float avoid)
+        {
+            float v = 0; UnityEngine.Random.Range(min, max);
+            while (Mathf.Abs(v) < avoid)
+            {
+                v = UnityEngine.Random.Range(min, max);
+            }
+
+            return v;
+        }
+
+        private void PenguinInstantiated(Penguin penguin)
+        {
+            allPenguins.Add(penguin.transform);
+        }
 
         void AddListeners()
         {
             //RemoveListeners();
 
-            TemperatureSystem.OnTemperatureChange += GUITemperature.Instance.UpdateEnvironmentTemp;
+            //Fire.OnPlayerInsideFireWarm += GUITemperature.Instance.PlayerInsideFireWarm;
+            //Fire.OnPlayerOutSideFireWarm += GUITemperature.Instance.PlayerOutsideFireWarm;
 
-            MouseManager.OnHoverOnResource += TextHelperManager.TextHover;
-            MouseManager.OnClickOnFloor += Player.MoveAgent;
-            MouseManager.OnActOnResource += Player.ActOnResource;
-            MouseManager.OnMouseWheel += FollowingCamera.Instance.OnMouseWheel;
-
-            Player.OnPlayerDead += GameOver;
-            Player.OnPlayerStart += FollowingCamera.Instance.PlayerActivated;
-            Player.OnBodyTemperatureChange += GUITemperature.Instance.UpdatePlayerTemp;
+            CraftingManager.OnFireCampCreated += GameManager.CallPenguinToPutOutFire;
 
             Fire.OnPlayerInsideFireWarm += Player.InsideFireWarm;
             Fire.OnPlayerOutSideFireWarm += Player.OutsideFireWarm;
-            //Fire.OnPlayerInsideFireWarm += GUITemperature.Instance.PlayerInsideFireWarm;
-            //Fire.OnPlayerOutSideFireWarm += GUITemperature.Instance.PlayerOutsideFireWarm;
+
+            Inventory.OnInventoryUpdate += CraftingManager.Instance.InventoryUpdated;
+
+            MouseManager.OnActOnResource += Player.ActOnResource;
+            MouseManager.OnClickOnFloor += Player.MoveAgent;
+            MouseManager.OnClickOnWater += Player.TryFishing;
+            MouseManager.OnHoverOnResource += TextHelperManager.TextHover;
+            MouseManager.OnMouseWheel += FollowingCamera.Instance.OnMouseWheel;
+
+            Penguin.OnPenguinInstantiated += PenguinInstantiated;
+
+            Player.OnBodyTemperatureChange += GUITemperature.Instance.UpdatePlayerTemp;
+            Player.OnPlayerDead += GameOver;
+            Player.OnPlayerStart += FollowingCamera.Instance.PlayerActivated;
+
+            TemperatureSystem.OnTemperatureChange += GUITemperature.Instance.UpdateEnvironmentTemp;
         }
 
         private void RemoveListeners()
         {
-            TemperatureSystem.OnTemperatureChange -= GUITemperature.Instance.UpdateEnvironmentTemp;
+            //Fire.OnPlayerInsideFireWarm -= GUITemperature.Instance.PlayerInsideFireWarm;
+            //Fire.OnPlayerOutSideFireWarm -= GUITemperature.Instance.PlayerOutsideFireWarm;
 
-            MouseManager.OnHoverOnResource -= TextHelperManager.TextHover;
-            MouseManager.OnClickOnFloor -= Player.MoveAgent;
-            MouseManager.OnActOnResource -= Player.ActOnResource;
-            MouseManager.OnMouseWheel -= FollowingCamera.Instance.OnMouseWheel;
-
-            Player.OnPlayerDead -= GameOver;
-            Player.OnPlayerStart -= FollowingCamera.Instance.PlayerActivated;
-            Player.OnBodyTemperatureChange -= GUITemperature.Instance.UpdatePlayerTemp;
+            CraftingManager.OnFireCampCreated -= GameManager.CallPenguinToPutOutFire;
 
             Fire.OnPlayerInsideFireWarm -= Player.InsideFireWarm;
             Fire.OnPlayerOutSideFireWarm -= Player.OutsideFireWarm;
 
-            //Fire.OnPlayerInsideFireWarm -= GUITemperature.Instance.PlayerInsideFireWarm;
-            //Fire.OnPlayerOutSideFireWarm -= GUITemperature.Instance.PlayerOutsideFireWarm;
+            Inventory.OnInventoryUpdate -= CraftingManager.Instance.InventoryUpdated;
+
+            MouseManager.OnActOnResource -= Player.ActOnResource;
+            MouseManager.OnClickOnFloor -= Player.MoveAgent;
+            MouseManager.OnClickOnWater -= Player.TryFishing;
+            MouseManager.OnHoverOnResource -= TextHelperManager.TextHover;
+            MouseManager.OnMouseWheel -= FollowingCamera.Instance.OnMouseWheel;
+
+            Penguin.OnPenguinInstantiated -= PenguinInstantiated;
+
+            Player.OnBodyTemperatureChange -= GUITemperature.Instance.UpdatePlayerTemp;
+            Player.OnPlayerDead -= GameOver;
+            Player.OnPlayerStart -= FollowingCamera.Instance.PlayerActivated;
+
+            TemperatureSystem.OnTemperatureChange -= GUITemperature.Instance.UpdateEnvironmentTemp;
+        }
+
+        private static void CallPenguinToPutOutFire(Fire fire)
+        {
+            Debug.Log("CallPenguinToPutOutFire " + allPenguins.Count);
+
+            float minDistance = float.PositiveInfinity;
+            Penguin nearestPenguin = null;
+            Vector3 firePos = fire.transform.position;
+            foreach (var pt in allPenguins)
+            {
+                float d = Vector3.Distance(pt.position, firePos);
+                if (d < minDistance)
+                {
+                    Penguin pg = pt.GetComponent<Penguin>();
+                    if (pg.state == Penguin.PENGUIN_STATE.WANDERING)
+                    {
+                        minDistance = d;
+                        nearestPenguin = pg;
+                    }
+                }
+            }
+
+            if (nearestPenguin != null)
+            {
+                Debug.Log("CallPenguinToPutOutFire FIREFIGHTER === " + nearestPenguin.name);
+                nearestPenguin.StopFire(fire);
+            }
         }
 
         private void OnDestroy()

@@ -8,21 +8,27 @@ namespace IHateWinter
         [SerializeField] float scrollSpeed = 0.25f;
         [SerializeField] float sinusMultiplier = 4;
 
-        Renderer rend;
+        Renderer render;
         Material material;
 
-        void Start()
+        private void Awake()
         {
-            rend = GetComponent<Renderer>();
-            material = rend.material;
+            render = GetComponent<Renderer>();
+            material = render.material;
         }
 
         void Update()
         {
-            float offsetX = Time.time * scrollSpeed;
-            float offsetY = Mathf.Sin(offsetX * sinusMultiplier);
+            float t = Time.time;
+            float matOffsetX = t * scrollSpeed;
+            float matOffsetY = Mathf.Sin(matOffsetX * sinusMultiplier);
+            float meshOffsetY = Mathf.Cos(t) / 200f;
 
-            material.SetTextureOffset("_MainTex", new Vector2(offsetX, offsetY));
+            material.SetTextureOffset("_MainTex", new Vector2(matOffsetX, matOffsetY));
+            //render.material.EnableKeyword("_NORMALMAP");
+            //material.SetTextureOffset("_BumpMap", new Vector2(-matOffsetY, matOffsetX));
+
+            transform.localPosition += Vector3.up * meshOffsetY;
         }
     }
 }

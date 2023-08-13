@@ -12,13 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8435ec4a8747e314d8954297e99d382a, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
+  craftingRecipes:
+  - wantedObject: 1
+    resourcesNeeded:
+    - resource: 3
+      quantity: 2
+    - resource: 4
+      quantity: 2
+    - resource: 5
+      quantity: 1
+  - wantedObject: 2
+    resourcesNeeded:
+    - resource: 3
+      quantity: 2
+    - resource: 4
+      quantity: 1
+    - resource: 5
+      quantity: 2
   temperatureTimes:
   - temperature: 0
     time: 60
   - temperature: -20
-    time: 120
+    time: 300
   - temperature: -40
-    time: 500
+    time: 600
   allInventoryItems:
   - {fileID: 11400000, guid: 4fa6b8a53f503c941afc0b9da6735343, type: 2}
   - {fileID: 11400000, guid: 32c4e4e5de1e87f44b92161640c79a33, type: 2}
@@ -44,4 +61,4 @@ MonoBehaviour:
     count: 200
   - prefab: {fileID: 1284317125727974972, guid: cf03322cdc125dc43a7b9c38c1315730, type: 3}
     namePrefix: '@rush-'
-    count: 600
+    count: 800

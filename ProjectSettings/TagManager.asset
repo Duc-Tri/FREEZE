@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Fire
   - Pinguin
+  - Water
   layers:
   - Default
   - TransparentFX

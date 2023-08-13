@@ -19,11 +19,11 @@ namespace IHateWinter
         private void OnEnable()
         {
             Instance = this;
-            background = GetComponentInChildren<Image>();
         }
 
         private void Awake()
         {
+            background = GetComponentInChildren<Image>();
             playerTemp.text = environmentTemp.text = string.Empty;
         }
 
@@ -37,10 +37,10 @@ namespace IHateWinter
             playerTemp.text = $"{t:0.0}°c";
 
             //if (background != null)
-                background.color =
-                    (Fire.NUMBER_FIRES_WARMING_PLAYER > 0) ? WARMING_COLOR :
-                    (t < Player.COOLING_TEMPERATURE) ? COLD_COLOR :
-                    NEUTRAL_COLOR;
+            background.color =
+                (Fire.NUMBER_FIRES_WARMING_PLAYER > 0) ? WARMING_COLOR :
+                (t < Player.COOLING_TEMPERATURE) ? COLD_COLOR :
+                NEUTRAL_COLOR;
         }
 
         /*

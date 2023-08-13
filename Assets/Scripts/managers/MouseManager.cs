@@ -10,6 +10,7 @@ namespace IHateWinter
         [SerializeField][Range(1, 500)] private float distanceRaycast = 100f;
 
         private Camera mainCamera;
+        public static Action<Vector3> OnClickOnWater;
         public static Action<Vector3> OnClickOnFloor;
         public static Action<AResource> OnHoverOnResource;
         public static Action<AResource> OnActOnResource;
@@ -32,7 +33,7 @@ namespace IHateWinter
         {
             if (GameManager.GameMode == GAME_MODE.IN_GAME && !EventSystem.current.IsPointerOverGameObject())
             {
-                if(Input.mouseScrollDelta.y!=0)
+                if (Input.mouseScrollDelta.y != 0)
                 {
                     OnMouseWheel?.Invoke(Input.mouseScrollDelta.y);
                 }
@@ -55,6 +56,8 @@ namespace IHateWinter
                         // Right mouse button clicked =============================================
                         if (raycastHit.collider.CompareTag("Resource"))
                             OnActOnResource?.Invoke(raycastHit.collider.gameObject.GetComponent<AResource>());
+                        else if (raycastHit.collider.CompareTag("Water"))
+                            OnClickOnWater?.Invoke(raycastHit.point);
                     }
                     else if (oldCollided != raycastHit.collider)
                     {

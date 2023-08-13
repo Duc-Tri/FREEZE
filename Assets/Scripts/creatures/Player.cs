@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 namespace IHateWinter
 {
-
     public class Player : MonoBehaviour
     {
-        [SerializeField] private bool cheatInvincible = false; // cheater !
-
         public const float DISTANCE_TO_HARVEST = 2.5f;
         public const float DISTANCE_TO_MOVE_HARVEST = 20f;
 
@@ -25,21 +19,22 @@ namespace IHateWinter
         [SerializeField][Range(0.01f, 10f)] private float SPEED_FIRE_WARM = 10f;
         [SerializeField][Range(0.01f, 10f)] private float COOLING_FACTOR = 0.2f;
 
+        [SerializeField] private Transform fishingLookAt;
         [SerializeField] private SpriteRenderer spriteRenderer;
         private Transform spriteTransform;
         private NavMeshAgent agent;
 
         [SerializeField] private float fireWarmEffect; // per second
-        private float bodyTemperature;  // celsius
+        private float bodyTemperature;  // in celsius
         private bool alive;
         private Vector3 targetPosition;
+        private AResource resourceToReach; // distance resource
 
         public static Action<float> OnBodyTemperatureChange;
         public static Action OnPlayerStart;
         public static Action OnPlayerDead;
-        private AResource resourceToReach;
 
-
+        static NavMeshHit hit;
 
         private void Awake()
         {
@@ -49,9 +44,10 @@ namespace IHateWinter
 
             spriteTransform = spriteRenderer.transform;
 
-            NavMeshHit hit;
             if (NavMesh.SamplePosition(transform.position, out hit, 100, NavMesh.AllAreas))
                 transform.position = hit.position;
+
+            fishingLookAt.gameObject.SetActive(false);
         }
 
         private void Start()
@@ -70,7 +66,7 @@ namespace IHateWinter
 
         public void MoveAgent(Vector3 pos)
         {
-            Debug.Log("MoveAgent ►►► " + pos);
+            //Debug.Log("MoveAgent ►►► " + pos);
 
             targetPosition = pos;
             if (agent != null)
@@ -91,8 +87,8 @@ namespace IHateWinter
             else if (Commons.NearEnoughXZ(transform.position, resource.transform.position, DISTANCE_TO_MOVE_HARVEST))
             {
                 Debug.Log("ActOnResource FAR === " + resource.name);
-                MoveAgent(resource.transform.position);
                 resourceToReach = resource;
+                MoveAgent(resource.transform.position);
             }
         }
 
@@ -102,7 +98,8 @@ namespace IHateWinter
 
             if (Mathf.Abs(bodyTemperature) < LOWEST_BODY_TEMPERATURE_BEARABLE)
             {
-                if (!cheatInvincible)
+                spriteRenderer.color = Color.cyan;
+                if (!GameManager.Instance.PlayerInvincible)
                 {
                     alive = false;
                     OnPlayerDead?.Invoke();
@@ -112,6 +109,8 @@ namespace IHateWinter
             {
                 if (resourceToReach != null)
                 {
+                    Debug.Log("resourceToReach:::: " + resourceToReach.name + " / " + resourceToReach.type);
+
                     if (Commons.NearEnoughXZ(transform.position, resourceToReach.transform.position, DISTANCE_TO_HARVEST))
                     {
                         ActOnResource(resourceToReach);
@@ -123,6 +122,9 @@ namespace IHateWinter
                     targetPosition = Vector3.down;
                     agent.isStopped = true;
                 }
+
+                if (fishingLookAt.gameObject.activeSelf)
+                    fishingLookAt.LookAt(fishingSpot);
 
                 float externTemp = TemperatureSystem.currentTemperature;
                 if (fireWarmEffect > 0)
@@ -147,6 +149,17 @@ namespace IHateWinter
         internal void InsideFireWarm()
         {
             fireWarmEffect += SPEED_FIRE_WARM;
+        }
+
+        Vector3 fishingSpot;
+        internal void TryFishing(Vector3 waterPoint)
+        {
+            if (Inventory.Instance.HasTool(TOOL.FISHING_ROD) && NavMesh.SamplePosition(waterPoint, out hit, 100, NavMesh.AllAreas))
+            {
+                fishingSpot = waterPoint;
+                fishingLookAt.gameObject.SetActive(true);
+                MoveAgent(hit.position);
+            }
         }
 
     }

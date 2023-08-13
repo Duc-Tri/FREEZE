@@ -10,7 +10,7 @@ namespace IHateWinter
     {
         public string ItemName;
 
-        public INVENTORY_ITEM ItemType;
+        public ITEM_TYPE ItemType;
 
         public RESOURCE ResourceType;
         public TOOL ToolType;

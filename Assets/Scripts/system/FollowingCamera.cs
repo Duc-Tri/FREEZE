@@ -19,7 +19,7 @@ namespace IHateWinter
         private Player player;
         private Transform playerTransform;
         public static FollowingCamera Instance;
-        private const float SPEED_WAITING_FACTOR = 100f;
+        private const float SPEED_WAITING_FACTOR = 10f;
 
         private float angleFromPlayer = 0;
         private Vector3 vectorFromPlayer;
@@ -37,7 +37,7 @@ namespace IHateWinter
             player = GameManager.Player;
             playerTransform = player.transform;
             UpdateVectorFromPlayer();
-            transform.position = playerTransform.position + Vector3.up + Vector3.back;
+            transform.position = playerTransform.position;// + Vector3.up + Vector3.back;
             //idealCamPos = transform.position;
 
             // to begin very slowly

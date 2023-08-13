@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace IHateWinter
 {
-    public class Pinguin : MonoBehaviour
+    public class Penguin : MonoBehaviour
     {
         Vector3 targetPos;
         //NavMeshPath path;
@@ -23,18 +25,25 @@ namespace IHateWinter
         private Vector3 RandomPos => new Vector3(Random.Range(-GameManager.Instance.halfObjectsMaxX, GameManager.Instance.halfObjectsMaxX), 0,
                 Random.Range(-GameManager.Instance.halfObjectsMaxX, GameManager.Instance.halfObjectsMaxX));
 
+        static NavMeshHit hit;
+        public static Action<Penguin> OnPenguinInstantiated;
+
+        public enum PENGUIN_STATE : byte { NONE, WANDERING, FIRE_FIGHTER, HAPPY_WITH_FISH, EATING_FISH }
+
+        public PENGUIN_STATE state;
+
         private void Awake()
         {
             alive = true;
-
+            state = PENGUIN_STATE.WANDERING;
             spriteTransform = spriteRenderer.transform;
 
-            NavMeshHit hit;
             if (NavMesh.SamplePosition(transform.position, out hit, 100, NavMesh.AllAreas))
                 transform.position = hit.position;
         }
 
-        private void Start()
+        static WaitForEndOfFrame waitFEOF = new WaitForEndOfFrame();
+        IEnumerator Start()
         {
             agent = GetComponent<NavMeshAgent>(); // in Start
             agent.speed /= 2f;
@@ -42,6 +51,10 @@ namespace IHateWinter
 
             // after Awake of BillBoardingManager creations of objects
             BillBoardingManager.StartAddSpriteTransform(spriteTransform);
+
+            // DIRTY SOLUTION !!!!!!!!!!!!!!!!!!!!!!!
+            yield return waitFEOF;
+            OnPenguinInstantiated?.Invoke(this);
         }
 
         internal void Act(AResource resource)
@@ -69,6 +82,19 @@ namespace IHateWinter
             //agent.CalculatePath(targetPos, path);
         }
 
+
+        Fire fireToPutOut;
+        internal void StopFire(Fire fire)
+        {
+            agent.isStopped = true;
+
+            state = PENGUIN_STATE.FIRE_FIGHTER;
+            fireToPutOut = fire;
+            agent.speed *= 4;
+            agent.SetDestination(fire.transform.position);
+
+            agent.isStopped = false;
+        }
     }
 
 }

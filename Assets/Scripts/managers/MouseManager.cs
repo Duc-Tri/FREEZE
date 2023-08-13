@@ -13,6 +13,7 @@ namespace IHateWinter
         public static Action<Vector3> OnClickOnFloor;
         public static Action<AResource> OnHoverOnResource;
         public static Action<AResource> OnActOnResource;
+        public static Action<float> OnMouseWheel;
         private Collider oldCollided;
 
         protected virtual void Awake()
@@ -31,6 +32,11 @@ namespace IHateWinter
         {
             if (GameManager.GameMode == GAME_MODE.IN_GAME && !EventSystem.current.IsPointerOverGameObject())
             {
+                if(Input.mouseScrollDelta.y!=0)
+                {
+                    OnMouseWheel?.Invoke(Input.mouseScrollDelta.y);
+                }
+
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out raycastHit, distanceRaycast))
                 {

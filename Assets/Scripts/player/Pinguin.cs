@@ -20,8 +20,8 @@ namespace IHateWinter
 
         public static Action<float> OnBodyTemperatureChange;
         public static Action OnPlayerDead;
-        private Vector3 RandomPos => new Vector3(Random.Range(-GameManager.Instance.halfMaxX, GameManager.Instance.halfMaxX), 0,
-                Random.Range(-GameManager.Instance.halfMaxX, GameManager.Instance.halfMaxX));
+        private Vector3 RandomPos => new Vector3(Random.Range(-GameManager.Instance.halfObjectsMaxX, GameManager.Instance.halfObjectsMaxX), 0,
+                Random.Range(-GameManager.Instance.halfObjectsMaxX, GameManager.Instance.halfObjectsMaxX));
 
         private void Awake()
         {
@@ -58,7 +58,7 @@ namespace IHateWinter
             if (!alive) return;
 
             //if (path.status == NavMeshPathStatus.PathComplete)
-            if (Commons.NearEnough(targetPos, transform.position, 1.5f))
+            if (Commons.NearEnoughXZ(targetPos, transform.position, 1.5f))
                 SetTargetPos();
         }
 

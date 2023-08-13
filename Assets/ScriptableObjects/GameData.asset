@@ -29,7 +29,7 @@ MonoBehaviour:
   itemsToInstanciate:
   - prefab: {fileID: 2393801787858279872, guid: ffcb638fab2ae1243ac9b7e2baa6c725, type: 3}
     namePrefix: '@pinguin-'
-    count: 20
+    count: 30
   - prefab: {fileID: 5124842334279455654, guid: a5ed8451b3b6d2c41aae0a868fcad351, type: 3}
     namePrefix: '@flint-'
     count: 200

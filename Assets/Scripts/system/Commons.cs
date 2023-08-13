@@ -14,7 +14,12 @@ namespace IHateWinter
 
     public static class Commons
     {
-        public static bool NearEnough(Vector3 pos, Vector3 target, float distance) => Mathf.Abs(target.z - pos.z) < distance && Mathf.Abs(target.x - pos.x) < distance;
+        public static bool NearEnoughXZ(Vector3 pos, Vector3 target, float distance) => Mathf.Abs(target.z - pos.z) < distance && Mathf.Abs(target.x - pos.x) < distance;
+
+        public static bool NearEnoughXYZ(Vector3 pos, Vector3 target, float distance) => Mathf.Abs(target.z - pos.z) < distance &&
+            Mathf.Abs(target.y - pos.y) < distance &&
+            Mathf.Abs(target.x - pos.x) < distance;
+
     }
 
 }

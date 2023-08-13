@@ -39,6 +39,8 @@ namespace IHateWinter
         public static Action OnPlayerDead;
         private AResource resourceToReach;
 
+
+
         private void Awake()
         {
             alive = true;
@@ -71,19 +73,22 @@ namespace IHateWinter
             Debug.Log("MoveAgent ►►► " + pos);
 
             targetPosition = pos;
-            agent?.SetDestination(pos);
-            agent.isStopped = false;
+            if (agent != null)
+            {
+                agent.SetDestination(pos);
+                agent.isStopped = false;
+            }
         }
 
         internal void ActOnResource(AResource resource)
         {
-            if (Commons.NearEnough(transform.position, resource.transform.position, DISTANCE_TO_HARVEST))
+            if (Commons.NearEnoughXZ(transform.position, resource.transform.position, DISTANCE_TO_HARVEST))
             {
                 Debug.Log("ActOnResource NEAR --- " + resource.name);
                 if (resource is IHarvestable i && Inventory.Instance.TryAdd(resource))
                     PoolerGameobjects.Instance.SaveToPool(resource.gameObject);
             }
-            else if (Commons.NearEnough(transform.position, resource.transform.position, DISTANCE_TO_MOVE_HARVEST))
+            else if (Commons.NearEnoughXZ(transform.position, resource.transform.position, DISTANCE_TO_MOVE_HARVEST))
             {
                 Debug.Log("ActOnResource FAR === " + resource.name);
                 MoveAgent(resource.transform.position);
@@ -107,13 +112,13 @@ namespace IHateWinter
             {
                 if (resourceToReach != null)
                 {
-                    if (Commons.NearEnough(transform.position, resourceToReach.transform.position, DISTANCE_TO_HARVEST))
+                    if (Commons.NearEnoughXZ(transform.position, resourceToReach.transform.position, DISTANCE_TO_HARVEST))
                     {
                         ActOnResource(resourceToReach);
                         resourceToReach = null;
                     }
                 }
-                else if (targetPosition != Vector3.down && Commons.NearEnough(transform.position, targetPosition, 0.2f))
+                else if (targetPosition != Vector3.down && Commons.NearEnoughXZ(transform.position, targetPosition, 0.2f))
                 {
                     targetPosition = Vector3.down;
                     agent.isStopped = true;
@@ -143,6 +148,7 @@ namespace IHateWinter
         {
             fireWarmEffect += SPEED_FIRE_WARM;
         }
+
     }
 
 }

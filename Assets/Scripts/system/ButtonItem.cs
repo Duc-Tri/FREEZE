@@ -39,7 +39,7 @@ namespace IHateWinter
                 picture.sprite = item.UISprite;
                 picture.color = Color.white;
                 picture.enabled = true;
-                tmp.text = item.name;
+                tmp.text = item.name + "(" + item.InStack + ")";
             }
             else
             {

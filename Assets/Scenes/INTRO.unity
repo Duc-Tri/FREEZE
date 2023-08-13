@@ -361,10 +361,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_Spacing: 21.6
+    m_Top: 50
+    m_Bottom: 50
+  m_ChildAlignment: 4
+  m_Spacing: 20
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -660,7 +660,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I Hate Winter !!!
+  m_text: Please, don't freeze !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d79c05f3ae69b54e87d59a2aeb2316e, type: 2}
   m_sharedMaterial: {fileID: 3230768683678253818, guid: 5d79c05f3ae69b54e87d59a2aeb2316e, type: 2}
@@ -687,12 +687,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 73.8
+  m_fontSize: 65.75
   m_fontSizeBase: 76.2
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 25
-  m_fontSizeMax: 99
+  m_fontSizeMax: 999
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 1426834694}
   - component: {fileID: 1426834693}
   m_Layer: 5
-  m_Name: Title (1)
+  m_Name: subtitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

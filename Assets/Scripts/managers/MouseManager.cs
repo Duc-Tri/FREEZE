@@ -41,7 +41,7 @@ namespace IHateWinter
                         // Left mouse button clicked ==============================================
                         if (raycastHit.collider.CompareTag("Floor"))
                             OnClickOnFloor?.Invoke(raycastHit.point);
-                        else if (NavMesh.SamplePosition(raycastHit.point, out navmeshHit, 50, NavMesh.AllAreas))
+                        else if (NavMesh.SamplePosition(raycastHit.point, out navmeshHit, 9, NavMesh.AllAreas))
                             OnClickOnFloor?.Invoke(navmeshHit.position);
                     }
                     else if (Input.GetMouseButtonDown(1))

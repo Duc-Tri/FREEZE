@@ -13,14 +13,12 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   temperatureTimes:
-  - temperature: 20
-    time: 5
   - temperature: 0
-    time: 10
+    time: 60
   - temperature: -20
-    time: 15
+    time: 120
   - temperature: -40
-    time: 20
+    time: 500
   allInventoryItems:
   - {fileID: 11400000, guid: 4fa6b8a53f503c941afc0b9da6735343, type: 2}
   - {fileID: 11400000, guid: 32c4e4e5de1e87f44b92161640c79a33, type: 2}
@@ -43,7 +41,7 @@ MonoBehaviour:
     count: 300
   - prefab: {fileID: 5124842334279455654, guid: a42c9bd34766a694b8ac79fbface0ca1, type: 3}
     namePrefix: '@wood-'
-    count: 100
+    count: 200
   - prefab: {fileID: 1284317125727974972, guid: cf03322cdc125dc43a7b9c38c1315730, type: 3}
     namePrefix: '@rush-'
-    count: 500
+    count: 600

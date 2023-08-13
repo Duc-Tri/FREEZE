@@ -18,6 +18,9 @@ namespace IHateWinter
         public bool IsStackable;
         public int MaxStackable;
 
+        [HideInInspector]
+        public int InStack;
+
         public Sprite UISprite;
     }
 }

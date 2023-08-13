@@ -7,6 +7,8 @@ namespace IHateWinter
         private void Awake()
         {
             Init(RESOURCE.STONE);
+            tag = "Untagged"; // FOR THE MOMENT ...
+
         }
 
     }

@@ -46,9 +46,11 @@ namespace IHateWinter
 
         internal void Act(AResource resource)
         {
-            if (Vector3.Distance(transform.position, resource.transform.position) < MAX_DISTANCE_TO_HARVEST && resource is IHarvestable i)
+            /*
+            if (Commons.NearEnough(transform.position, resource.transform.position, MAX_DISTANCE_TO_HARVEST) && resource is IHarvestable i)
             {
             }
+            */
         }
 
         private void Update()
@@ -56,7 +58,7 @@ namespace IHateWinter
             if (!alive) return;
 
             //if (path.status == NavMeshPathStatus.PathComplete)
-            if (Vector3.Distance(targetPos, transform.position) < 1.5f)
+            if (Commons.NearEnough(targetPos, transform.position, 1.5f))
                 SetTargetPos();
         }
 

@@ -36,10 +36,10 @@ namespace IHateWinter
         {
             playerTemp.text = $"{t:0.0}°c";
 
-            if (background != null)
+            //if (background != null)
                 background.color =
                     (Fire.NUMBER_FIRES_WARMING_PLAYER > 0) ? WARMING_COLOR :
-                    (t < 20) ? COLD_COLOR :
+                    (t < Player.COOLING_TEMPERATURE) ? COLD_COLOR :
                     NEUTRAL_COLOR;
         }
 

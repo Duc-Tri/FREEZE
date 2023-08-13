@@ -16,7 +16,7 @@ namespace IHateWinter
 
         public static void TextHover(AResource resource)
         {
-            if (resource != null && Vector3.Distance(GameManager.Player.transform.position, resource.transform.position) < Player.MAX_DISTANCE_TO_HARVEST)
+            if (resource != null && Commons.NearEnough(GameManager.Player.transform.position, resource.transform.position, Player.DISTANCE_TO_MOVE_HARVEST))
             {
                 Vector3 v = resource.transform.position;
                 v.y += resource.GetComponent<NavMeshObstacle>().size.y;

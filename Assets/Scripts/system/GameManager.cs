@@ -16,6 +16,7 @@ namespace IHateWinter
         [SerializeField] public bool CanAlwaysCraft = false; // cheater !
 
         [SerializeField] private GameData gameData;
+        [SerializeField] private Canvas GameOverCanvas;
 
         TreeManager treeManager;
 
@@ -23,9 +24,11 @@ namespace IHateWinter
         public float halfObjectsMaxX, halfObjectsMaxZ;
 
         public static Player Player;
-        public static GAME_MODE GameMode { get; private set; }
+        public static GAME_STATE GameState { get; private set; }
         public static GameManager Instance { get; private set; }
         public static GameData GameData { get { return Instance.gameData; } }
+
+
         public static List<Transform> allPenguins;
 
         private void OnEnable()
@@ -53,16 +56,16 @@ namespace IHateWinter
                 InstantiateResource(item.prefab, item.count, item.namePrefix);
 
             TemperatureSystem.Instance.Init(gameData.temperatureTimes);
-
         }
 
         IEnumerator Start()
         {
             AddListeners();
-            GameMode = GAME_MODE.IN_GAME; // TODO : change it when we have menu !
+            GameOverCanvas.gameObject.SetActive(false);
+            GameState = GAME_STATE.IN_GAME; // TODO : change it when we have menu !
 
             //////////////////////// to wait for Nawmesh loading, etc.
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(3f);
             //yield return null;
 
             Player.gameObject.SetActive(true);
@@ -105,23 +108,26 @@ namespace IHateWinter
             //Fire.OnPlayerInsideFireWarm += GUITemperature.Instance.PlayerInsideFireWarm;
             //Fire.OnPlayerOutSideFireWarm += GUITemperature.Instance.PlayerOutsideFireWarm;
 
-            CraftingManager.OnFireCampCreated += GameManager.CallPenguinToPutOutFire;
+            CraftingManager.OnFireCampCreated += GameManager.CallPenguinToStopFire;
 
             Fire.OnPlayerInsideFireWarm += Player.InsideFireWarm;
             Fire.OnPlayerOutSideFireWarm += Player.OutsideFireWarm;
 
             Inventory.OnInventoryUpdate += CraftingManager.Instance.InventoryUpdated;
+            Inventory.OnCreateFish += GameManager.CallPenguinsToFish;
 
             MouseManager.OnActOnResource += Player.ActOnResource;
             MouseManager.OnClickOnFloor += Player.MoveAgent;
-            MouseManager.OnClickOnWater += Player.TryFishing;
+            MouseManager.OnClickOnWater += Player.GoToFishing;
             MouseManager.OnHoverOnResource += TextHelperManager.TextHover;
             MouseManager.OnMouseWheel += FollowingCamera.Instance.OnMouseWheel;
 
             Penguin.OnPenguinInstantiated += PenguinInstantiated;
+            Penguin.OnConsumeFish += FishConsumed;
 
             Player.OnBodyTemperatureChange += GUITemperature.Instance.UpdatePlayerTemp;
             Player.OnPlayerDead += GameOver;
+            Player.OnPlayerDead += BillBoardingManager.DeactivateAll;
             Player.OnPlayerStart += FollowingCamera.Instance.PlayerActivated;
 
             TemperatureSystem.OnTemperatureChange += GUITemperature.Instance.UpdateEnvironmentTemp;
@@ -132,29 +138,52 @@ namespace IHateWinter
             //Fire.OnPlayerInsideFireWarm -= GUITemperature.Instance.PlayerInsideFireWarm;
             //Fire.OnPlayerOutSideFireWarm -= GUITemperature.Instance.PlayerOutsideFireWarm;
 
-            CraftingManager.OnFireCampCreated -= GameManager.CallPenguinToPutOutFire;
+            CraftingManager.OnFireCampCreated -= GameManager.CallPenguinToStopFire;
 
             Fire.OnPlayerInsideFireWarm -= Player.InsideFireWarm;
             Fire.OnPlayerOutSideFireWarm -= Player.OutsideFireWarm;
 
             Inventory.OnInventoryUpdate -= CraftingManager.Instance.InventoryUpdated;
+            Inventory.OnCreateFish -= GameManager.CallPenguinsToFish;
 
             MouseManager.OnActOnResource -= Player.ActOnResource;
             MouseManager.OnClickOnFloor -= Player.MoveAgent;
-            MouseManager.OnClickOnWater -= Player.TryFishing;
+            MouseManager.OnClickOnWater -= Player.GoToFishing;
             MouseManager.OnHoverOnResource -= TextHelperManager.TextHover;
             MouseManager.OnMouseWheel -= FollowingCamera.Instance.OnMouseWheel;
 
             Penguin.OnPenguinInstantiated -= PenguinInstantiated;
+            Penguin.OnConsumeFish -= FishConsumed;
 
             Player.OnBodyTemperatureChange -= GUITemperature.Instance.UpdatePlayerTemp;
             Player.OnPlayerDead -= GameOver;
+            Player.OnPlayerDead -= BillBoardingManager.DeactivateAll;
             Player.OnPlayerStart -= FollowingCamera.Instance.PlayerActivated;
 
             TemperatureSystem.OnTemperatureChange -= GUITemperature.Instance.UpdateEnvironmentTemp;
         }
 
-        private static void CallPenguinToPutOutFire(Fire fire)
+        private void FishConsumed(Fish fish)
+        {
+            foreach (var pt in allPenguins)
+            {
+                Penguin pg = pt.GetComponent<Penguin>();
+                if (pg.fishToGet == fish)
+                    pg.Wandering();
+            }
+        }
+
+        private static void CallPenguinsToFish(Fish fish)
+        {
+            foreach (var pt in allPenguins)
+            {
+                Penguin pg = pt.GetComponent<Penguin>();
+                pg.GoGetFish(fish);
+            }
+        }
+
+
+        private static void CallPenguinToStopFire(Fire fire)
         {
             Debug.Log("CallPenguinToPutOutFire " + allPenguins.Count);
 
@@ -167,7 +196,7 @@ namespace IHateWinter
                 if (d < minDistance)
                 {
                     Penguin pg = pt.GetComponent<Penguin>();
-                    if (pg.state == Penguin.PENGUIN_STATE.WANDERING)
+                    if (pg.penguinState == Penguin.PENGUIN_STATE.WANDERING)
                     {
                         minDistance = d;
                         nearestPenguin = pg;
@@ -188,6 +217,13 @@ namespace IHateWinter
         }
 
         private void GameOver()
+        {
+            GameState = GAME_STATE.GAME_OVER;
+            //SceneManager.LoadScene("INTRO");
+            GameOverCanvas.gameObject.SetActive(true);
+        }
+
+        public void OnBackToMenu()
         {
             SceneManager.LoadScene("INTRO");
         }

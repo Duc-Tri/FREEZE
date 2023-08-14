@@ -58,6 +58,7 @@ namespace IHateWinter
                 Inventory.Instance.ConsumeItems(FireCampRecipe);
 
                 Transform fire = Instantiate(firePrefab, GameManager.Instance.transform).transform;
+                fire.name = "@fire-" + Time.time;
 
                 if (NavMesh.SamplePosition(GameManager.Player.transform.position, out navMeshHit, 10, NavMesh.AllAreas))
                 {
@@ -75,7 +76,7 @@ namespace IHateWinter
             if ((GameManager.Instance.CanAlwaysCraft || CanMake(FishingRodRecipe)) && !Inventory.Instance.HasTool(TOOL.FISHING_ROD))
             {
                 Inventory.Instance.ConsumeItems(FishingRodRecipe);
-                Inventory.Instance.TryAdd(TOOL.FISHING_ROD);
+                Inventory.Instance.TryAddTool(TOOL.FISHING_ROD);
 
                 InventoryUpdated();
             }

@@ -31,7 +31,7 @@ namespace IHateWinter
 
         void Update()
         {
-            if (GameManager.GameMode == GAME_MODE.IN_GAME && !EventSystem.current.IsPointerOverGameObject())
+            if (GameManager.GameState == GAME_STATE.IN_GAME && !EventSystem.current.IsPointerOverGameObject())
             {
                 if (Input.mouseScrollDelta.y != 0)
                 {

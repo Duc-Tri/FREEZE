@@ -22,7 +22,8 @@ namespace IHateWinter
                 v.y += resource.GetComponent<NavMeshObstacle>().size.y;
                 staticTransform.position = v;
 
-                text.text = $"{resource.name} / {resource.type} / {resource.tag}";
+                //text.text = $"{resource.name} / {resource.type} / {resource.tag}";
+                text.text = resource.type.ToString();
             }
             else
             {

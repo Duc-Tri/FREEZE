@@ -8,8 +8,8 @@ TagManager:
   - Obstacle
   - Floor
   - Fire
-  - Pinguin
   - Water
+  - Penguin
   layers:
   - Default
   - TransparentFX

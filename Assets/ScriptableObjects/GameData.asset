@@ -31,7 +31,7 @@ MonoBehaviour:
       quantity: 2
   temperatureTimes:
   - temperature: 0
-    time: 60
+    time: 120
   - temperature: -20
     time: 300
   - temperature: -40
@@ -43,22 +43,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3264e2131d4ae804587902464835e263, type: 2}
   - {fileID: 11400000, guid: c1ed853d13fd5e64ca7b759c79d83183, type: 2}
   - {fileID: 11400000, guid: 45b657c2e9b1e7148a87e12093479244, type: 2}
+  - {fileID: 11400000, guid: ddfee3a8c72cd934db102acdca4ad23a, type: 2}
   itemsToInstanciate:
   - prefab: {fileID: 2393801787858279872, guid: ffcb638fab2ae1243ac9b7e2baa6c725, type: 3}
     namePrefix: '@pinguin-'
-    count: 30
+    count: 15
   - prefab: {fileID: 5124842334279455654, guid: a5ed8451b3b6d2c41aae0a868fcad351, type: 3}
     namePrefix: '@flint-'
-    count: 200
+    count: 150
   - prefab: {fileID: 5124842334279455654, guid: 31fea44b23aef0d47af68d468f5e2eb6, type: 3}
     namePrefix: '@stone-'
-    count: 300
+    count: 100
   - prefab: {fileID: 1284317125727974972, guid: d841d7b4306c5df43bdb0da62ed2462b, type: 3}
     namePrefix: '@tree-'
-    count: 300
+    count: 110
   - prefab: {fileID: 5124842334279455654, guid: a42c9bd34766a694b8ac79fbface0ca1, type: 3}
     namePrefix: '@wood-'
     count: 200
   - prefab: {fileID: 1284317125727974972, guid: cf03322cdc125dc43a7b9c38c1315730, type: 3}
     namePrefix: '@rush-'
-    count: 800
+    count: 600

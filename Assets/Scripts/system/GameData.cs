@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace IHateWinter
@@ -18,10 +19,10 @@ namespace IHateWinter
 
         public InventoryItem SearchItemByResourceType(RESOURCE res)
         {
-            foreach (var item in allInventoryItems)
+            foreach (InventoryItem item in allInventoryItems)
             {
                 if (item.ResourceType == res)
-                    return item;
+                    return item.Clone();
             }
 
             return null;

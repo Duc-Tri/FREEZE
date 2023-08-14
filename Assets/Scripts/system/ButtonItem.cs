@@ -9,7 +9,7 @@ namespace IHateWinter
         [SerializeField] private Image picture;
         [SerializeField] private TextMeshProUGUI tmp;
 
-        private InventoryItem item;
+        public InventoryItem item;
 
         private void Awake()
         {

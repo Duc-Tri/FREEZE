@@ -3,13 +3,15 @@ using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Assertions;
 
 namespace IHateWinter
 {
     public class Inventory : MonoBehaviour
     {
-        private const int INVENTORY_CAPACITY = 5;
+        [SerializeField] private GameObject fishPrefab;
+        private const int INVENTORY_CAPACITY = 7;
 
         public InventoryItem[] Items;
 
@@ -18,6 +20,8 @@ namespace IHateWinter
         public static Inventory Instance;
 
         public static Action OnInventoryUpdate;
+        public static Action<Fish> OnCreateFish;
+
 
         private void OnEnable()
         {
@@ -37,7 +41,7 @@ namespace IHateWinter
             UpdateUI();
         }
 
-        internal bool TryAdd(TOOL tool)
+        internal bool TryAddTool(TOOL tool)
         {
             for (int i = 0; i < Items.Length; i++)
             {
@@ -56,7 +60,7 @@ namespace IHateWinter
             return false; // inventory full, all stacks full
         }
 
-        public bool TryAdd(AResource resource)
+        public bool TryAddResource(AResource resource)
         {
             InventoryItem ii;
 
@@ -113,11 +117,11 @@ namespace IHateWinter
             for (int i = 0; i < Items.Length; i++)
                 if (Items[i] != null && Items[i].ToolType == tool)
                 {
-                    Debug.Log("HasTool - " + tool + " TRUE");
+                    //Debug.Log("HasTool - " + tool + " TRUE");
                     return true;
                 }
 
-            Debug.Log("HasTool - " + tool + " FALSE");
+            //Debug.Log("HasTool - " + tool + " FALSE");
             return false;
         }
 
@@ -176,6 +180,46 @@ namespace IHateWinter
             UpdateUI();
 
             return (quantity == 0);
+        }
+
+        internal void ConsumeTool(TOOL tool)
+        {
+            for (int i = 0; i < Items.Length; i++)
+            {
+                InventoryItem ii = Items[i];
+                if (ii != null && ii.ToolType == tool)
+                {
+                    Items[i] = null;
+                    break;
+                }
+            }
+
+            OnInventoryUpdate?.Invoke();
+            UpdateUI();
+        }
+
+
+        NavMeshHit nmHit;
+        public void OnButtonItemClick(ButtonItem bi)
+        {
+
+            if (bi.item.ResourceType == RESOURCE.FISH)
+            {
+                GameObject f = Instantiate(fishPrefab);
+                f.transform.position = GameManager.Player.transform.position + Vector3.right * 2f + Vector3.forward * 2f;
+
+                Vector3 pos = GameManager.Player.transform.position + UnityEngine.Random.onUnitSphere * 3f;
+
+
+                if (NavMesh.SamplePosition(pos, out nmHit, 5, NavMesh.AllAreas))
+                {
+                    f.transform.position = nmHit.position;
+                    Inventory.Instance.ConsumeItem(RESOURCE.FISH, 1);
+                    OnCreateFish?.Invoke(f.GetComponent<Fish>());
+                }
+
+            }
+
         }
 
     }

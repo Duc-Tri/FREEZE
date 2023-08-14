@@ -13,14 +13,18 @@ namespace IHateWinter
             { RESOURCE.FLINT, "flints" },
             { RESOURCE.STONE, "stones" },
             { RESOURCE.WOOD, "wood" } ,
-            { RESOURCE.RUSH, "rushes" }         };
+            { RESOURCE.RUSH, "rushes" },
+        { RESOURCE.FISH, "fish" }
+        };
 
         public static Dictionary<RESOURCE, Sprite[]> spritesResources = new Dictionary<RESOURCE, Sprite[]> {
             { RESOURCE.TREE, null },
             { RESOURCE.FLINT, null },
             { RESOURCE.STONE, null },
             { RESOURCE.WOOD, null } ,
-            { RESOURCE.RUSH, null }        };
+            { RESOURCE.RUSH, null }        ,
+        { RESOURCE.FISH, null }        ,
+        };
 
         public RESOURCE type = RESOURCE.NONE;
 

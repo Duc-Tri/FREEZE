@@ -19,7 +19,7 @@ namespace IHateWinter
         private Player player;
         private Transform playerTransform;
         public static FollowingCamera Instance;
-        private const float SPEED_WAITING_FACTOR = 10f;
+        private const float SPEED_WAITING_FACTOR = 5f;
 
         private float angleFromPlayer = 0;
         private Vector3 vectorFromPlayer;

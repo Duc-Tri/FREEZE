@@ -7,6 +7,9 @@ namespace IHateWinter
 {
     public class Player : MonoBehaviour
     {
+        public enum PLAYER_STATE : byte { NONE = 0, DEAD, WANDERING, GO_TO_FISHING, FISHING }
+        public PLAYER_STATE playerState;
+
         public const float DISTANCE_TO_HARVEST = 2.5f;
         public const float DISTANCE_TO_MOVE_HARVEST = 20f;
 
@@ -17,16 +20,16 @@ namespace IHateWinter
         public const float HIGHEST_BODY_TEMPERATURE_BEARABLE = 50;
 
         [SerializeField][Range(0.01f, 10f)] private float SPEED_FIRE_WARM = 10f;
-        [SerializeField][Range(0.01f, 10f)] private float COOLING_FACTOR = 0.2f;
+        [SerializeField][Range(0.01f, 5f)] private float COOLING_FACTOR = 0.2f;
+        [SerializeField] private HoveringTextMeshPro hoveringTMP;
 
-        [SerializeField] private Transform fishingLookAt;
         [SerializeField] private SpriteRenderer spriteRenderer;
         private Transform spriteTransform;
         private NavMeshAgent agent;
 
         [SerializeField] private float fireWarmEffect; // per second
         private float bodyTemperature;  // in celsius
-        private bool alive;
+        //private bool alive;
         private Vector3 targetPosition;
         private AResource resourceToReach; // distance resource
 
@@ -36,18 +39,29 @@ namespace IHateWinter
 
         static NavMeshHit hit;
 
+        // fishing ================================================================================
+        [SerializeField] private Transform fishingLookAt;
+        Vector3 fishingSpot;
+        private AmountBar fishingAmountBar;
+        [SerializeField][Range(0.1f, 99f)] private float FISHING_DURATION; // in seconds
+        [SerializeField] private GameObject fishPrefab;
+        [SerializeField][Range(0, 1)] private float ROD_BREAKING_CHANCE = 0.7f; // 0f..1f use Random.value
+
         private void Awake()
         {
-            alive = true;
+            //alive = true;
+            playerState = PLAYER_STATE.WANDERING;
             bodyTemperature = 37;
             targetPosition = Vector3.down;
 
             spriteTransform = spriteRenderer.transform;
 
-            if (NavMesh.SamplePosition(transform.position, out hit, 100, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(transform.position, out hit, 10, NavMesh.AllAreas))
                 transform.position = hit.position;
 
             fishingLookAt.gameObject.SetActive(false);
+            fishingAmountBar = GetComponentInChildren<AmountBar>();
+            fishingAmountBar.gameObject.SetActive(false);
         }
 
         private void Start()
@@ -74,6 +88,14 @@ namespace IHateWinter
                 agent.SetDestination(pos);
                 agent.isStopped = false;
             }
+
+            if (playerState == PLAYER_STATE.GO_TO_FISHING || playerState == PLAYER_STATE.FISHING)
+            {
+                fishingAmountBar.gameObject.SetActive(false);
+                fishingLookAt.gameObject.SetActive(false);
+            }
+
+            playerState = PLAYER_STATE.WANDERING;
         }
 
         internal void ActOnResource(AResource resource)
@@ -81,7 +103,7 @@ namespace IHateWinter
             if (Commons.NearEnoughXZ(transform.position, resource.transform.position, DISTANCE_TO_HARVEST))
             {
                 Debug.Log("ActOnResource NEAR --- " + resource.name);
-                if (resource is IHarvestable i && Inventory.Instance.TryAdd(resource))
+                if (resource is IHarvestable i && Inventory.Instance.TryAddResource(resource))
                     PoolerGameobjects.Instance.SaveToPool(resource.gameObject);
             }
             else if (Commons.NearEnoughXZ(transform.position, resource.transform.position, DISTANCE_TO_MOVE_HARVEST))
@@ -94,38 +116,83 @@ namespace IHateWinter
 
         private void Update()
         {
-            if (!alive) return;
+            if (playerState == PLAYER_STATE.DEAD) return;
 
             if (Mathf.Abs(bodyTemperature) < LOWEST_BODY_TEMPERATURE_BEARABLE)
             {
+                // DEAD BY FROZEN ! ===============================================================
                 spriteRenderer.color = Color.cyan;
                 if (!GameManager.Instance.PlayerInvincible)
                 {
-                    alive = false;
+                    //alive = false;
+                    playerState = PLAYER_STATE.DEAD;
                     OnPlayerDead?.Invoke();
                 }
+                fishingAmountBar.gameObject.SetActive(false);
+                fishingLookAt.gameObject.SetActive(false);
             }
             else
             {
                 if (resourceToReach != null)
                 {
-                    Debug.Log("resourceToReach:::: " + resourceToReach.name + " / " + resourceToReach.type);
+                    // REACHING A RESOURCE ========================================================
 
+                    //Debug.Log("resourceToReach:::: " + resourceToReach.name + " / " + resourceToReach.type);
                     if (Commons.NearEnoughXZ(transform.position, resourceToReach.transform.position, DISTANCE_TO_HARVEST))
                     {
                         ActOnResource(resourceToReach);
                         resourceToReach = null;
                     }
                 }
-                else if (targetPosition != Vector3.down && Commons.NearEnoughXZ(transform.position, targetPosition, 0.2f))
+                else if (targetPosition == Vector3.down)
                 {
+                    // ALREADY STOPPED, DOING BUSSINESS ! =========================================
+                    if (playerState == PLAYER_STATE.FISHING)
+                    {
+                        fishingAmountBar.UpdateDeltaTime(Time.deltaTime);
+
+                        // get a FISH !
+                        if (fishingAmountBar.IsOver)
+                        {
+                            playerState = PLAYER_STATE.NONE;
+                            fishingLookAt.gameObject.SetActive(false);
+                            fishingAmountBar.gameObject.SetActive(false);
+                            Inventory.Instance.TryAddResource(fishPrefab.GetComponent<AResource>());
+
+                            // break the fishing rod ?
+                            if (UnityEngine.Random.value < ROD_BREAKING_CHANCE)
+                            {
+                                Inventory.Instance.ConsumeTool(TOOL.FISHING_ROD);
+                                //hoveringTMP.gameObject.SetActive(true);
+                                hoveringTMP.WakeUp("broke my fishing rod!");
+                            }
+                        }
+                    }
+                }
+                else if (targetPosition != Vector3.down && Commons.NearEnoughXZ(transform.position, targetPosition, 0.15f))
+                {
+                    // NOT HARVESTING RESOURCE, STOPPING AT DESTINATION ============================
                     targetPosition = Vector3.down;
                     agent.isStopped = true;
+
+                    // arrive at fishint spot ?
+                    if (playerState == PLAYER_STATE.GO_TO_FISHING)
+                    {
+                        playerState = PLAYER_STATE.FISHING;
+                        fishingAmountBar.Init(FISHING_DURATION);
+                        fishingAmountBar.gameObject.SetActive(true);
+                    }
                 }
 
                 if (fishingLookAt.gameObject.activeSelf)
+                {
                     fishingLookAt.LookAt(fishingSpot);
+                    Vector3 rot = fishingLookAt.eulerAngles;
+                    rot.x = 0;
+                    fishingLookAt.eulerAngles = rot;
+                }
 
+                // TEMPERATURE ====================================================================
                 float externTemp = TemperatureSystem.currentTemperature;
                 if (fireWarmEffect > 0)
                     // NEAR A FIRE
@@ -151,14 +218,20 @@ namespace IHateWinter
             fireWarmEffect += SPEED_FIRE_WARM;
         }
 
-        Vector3 fishingSpot;
-        internal void TryFishing(Vector3 waterPoint)
+        internal void GoToFishing(Vector3 waterPoint)
         {
-            if (Inventory.Instance.HasTool(TOOL.FISHING_ROD) && NavMesh.SamplePosition(waterPoint, out hit, 100, NavMesh.AllAreas))
+            if (Inventory.Instance.HasTool(TOOL.FISHING_ROD) && NavMesh.SamplePosition(waterPoint, out hit, 50, NavMesh.AllAreas))
             {
+                playerState = PLAYER_STATE.GO_TO_FISHING;
+
                 fishingSpot = waterPoint;
                 fishingLookAt.gameObject.SetActive(true);
-                MoveAgent(hit.position);
+
+                // move with fishing rod !
+                targetPosition = hit.position;
+                agent.SetDestination(targetPosition);
+                agent.isStopped = false;
+                fishingAmountBar.gameObject.SetActive(false);
             }
         }
 

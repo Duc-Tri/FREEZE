@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/INTRO.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/I-HATE-WINTER.unity
+    path: Assets/Scenes/I-HATE-PENGUINS.unity
     guid: 6612ae5b4d95a4148a999d0b5146bf7b
   m_configObjects: {}

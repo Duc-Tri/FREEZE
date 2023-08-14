@@ -18,4 +18,5 @@ MonoBehaviour:
   ToolType: 0
   IsStackable: 1
   MaxStackable: 99
+  InStack: 1
   UISprite: {fileID: -926959881, guid: e9862c554d77217449e836bbc21f030e, type: 3}

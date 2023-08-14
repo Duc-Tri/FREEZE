@@ -10,7 +10,7 @@ namespace IHateWinter
 
         public void OnPlay()
         {
-            SceneManager.LoadScene("I-HATE-WINTER");
+            SceneManager.LoadScene("I-HATE-PENGUINS");
         }
 
         public void OnQuit()

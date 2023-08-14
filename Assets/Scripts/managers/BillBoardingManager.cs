@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -65,6 +66,20 @@ namespace IHateWinter
             spritesTransform.Remove(transform);
         }
 
+        internal static void DeactivateAll()
+        {
+            for (int i = 0; i < spritesTransform.Count; i++)
+            {
+                spritesTransform[i].parent.gameObject.SetActive(false);
+            }
+
+            foreach (var text in textsTransform)
+            {
+                text.gameObject.SetActive(false);
+            }
+        }
+
+        //public void D
     }
 
 }
